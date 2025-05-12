@@ -54,6 +54,10 @@
             padding: 15px;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer; /* Indica que el elemento es clickeable */
+        }
+        .tourist-spot:hover {
+            background: #f4f4f4; /* Cambio de color al pasar el cursor */
         }
         footer {
             text-align: center;
@@ -63,26 +67,6 @@
             position: relative;
             bottom: 0;
             width: 100%;
-        }
-        .comments-section {
-            margin-top: 30px;
-            background: #fff;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .star-rating {
-            display: flex;
-            justify-content: center;
-            margin: 10px 0;
-        }
-        .star {
-            font-size: 30px;
-            cursor: pointer;
-            color: #FFD700; /* Color dorado para las estrellas */
-        }
-        .star:hover {
-            color: #FFC107; /* Color al pasar el mouse */
         }
     </style>
 </head>
@@ -97,50 +81,31 @@
     </header>
     <div class="container">
         <h2>Principales Atracciones</h2>
-        <div class="tourist-spot">
+        <div class="tourist-spot" onclick="window.location.href='zona-arqueologica.html'">
             <h3>Zona arqueológica</h3>
             <p>Los Pochotes</p>
         </div>
-        <div class="tourist-spot">
+        <div class="tourist-spot" onclick="window.location.href='monumentos.html'">
             <h3>Monumentos</h3>
             <p>Capilla del santo entierro</p>
             <p>Guerrero Chimalli</p>
         </div>
-        <div class="tourist-spot">
+        <div class="tourist-spot" onclick="window.location.href='parques.html'">
             <h3>Parques</h3>
             <p>Parque Ecoturístico el chimalhuache</p>
         </div>
-        <div class="tourist-spot">
+        <div class="tourist-spot" onclick="window.location.href='plazas.html'">
             <h3>Plazas</h3>
             <p>Plaza Vidrieros</p>
             <p>Plaza Zaragoza</p>
         </div>
-        <div class="tourist-spot">
+        <div class="tourist-spot" onclick="window.location.href='zona-deportiva.html'">
             <h3>Zona Deportiva</h3>
             <p>El tepalcate</p>
-        </div>
-
-        <div class="comments-section">
-            <h2>Comentarios</h2>
-            <textarea rows="4" cols="50" placeholder="Deja tu comentario aquí..."></textarea>
-            <br>
-            <div class="star-rating">
-                <span class="star" onclick="rate(1)">&#9733;</span>
-                <span class="star" onclick="rate(2)">&#9733;</span>
-                <span class="star" onclick="rate(3)">&#9733;</span>
-                <span class="star" onclick="rate(4)">&#9733;</span>
-                <span class="star" onclick="rate(5)">&#9733;</span>
-            </div>
-            <p id="ratingResult"></p>
         </div>
     </div>
     <footer>
         <p>&copy; 2025 Conalep Chimalhuacán</p>
     </footer>
-    <script>
-        function rate(stars) {
-            document.getElementById('ratingResult').innerText = "Has calificado la página con " + stars + " estrella(s).";
-        }
-    </script>
 </body>
 </html>
