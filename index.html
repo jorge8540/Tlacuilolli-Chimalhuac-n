@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tlacuilolli Chimalhuacán - Guía Turística</title>
+    <title>Chimalhuacán - Guía Turística</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
     <style>
-        /* Paleta de colores más vibrante */
+        /* Paleta de colores vibrante */
         :root {
             --primary-color: #007BFF;
             --secondary-color: #FFC107;
@@ -14,7 +17,7 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: var(--background-color);
@@ -27,9 +30,22 @@
             padding: 20px 0;
             text-align: center;
             position: relative;
+            animation: headerAnimation 1s ease-in-out;
+        }
+
+        @keyframes headerAnimation {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         h1 {
+            font-family: 'Pacifico', cursive;
             font-size: 48px;
             color: white;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
@@ -41,6 +57,19 @@
             width: 60px;
             vertical-align: middle;
             margin: 0 20px;
+            animation: logoAnimation 2s infinite ease-in-out;
+        }
+
+        @keyframes logoAnimation {
+            0% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(20deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
         }
 
         .header-content {
@@ -53,6 +82,18 @@
             margin-top: 10px;
             font-size: 24px;
             color: white;
+            animation: subTitleAnimation 1.5s ease-in-out;
+        }
+
+        @keyframes subTitleAnimation {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .container {
@@ -63,6 +104,22 @@
         h2 {
             color: var(--primary-color);
             margin-bottom: 20px;
+            font-size: 36px;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+            animation: h2Animation 1s ease-in-out;
+        }
+
+        @keyframes h2Animation {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         .tourist-spot {
@@ -73,6 +130,18 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             transition: transform 0.3s ease;
+            animation: spotAnimation 1s ease-in-out;
+        }
+
+        @keyframes spotAnimation {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .tourist-spot:hover {
@@ -83,16 +152,21 @@
         .tourist-spot h3 {
             color: var(--primary-color);
             margin-bottom: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Pacifico', cursive;
         }
 
         .tourist-spot p {
             margin-top: 5px;
+            font-size: 16px;
         }
 
         .tourist-spot img {
             max-width: 100%;
             border-radius: 5px;
             margin-top: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         footer {
@@ -103,97 +177,56 @@
             position: relative;
             bottom: 0;
             width: 100%;
-        }
-
-        .comments-section {
-            margin-top: 40px;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .comment-container {
-            width: 100%;
-            margin-top: 20px;
-            flex-grow: 1;
-            overflow-y: auto;
-        }
-
-        .comment {
-            background-color: #F5F5F5;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .comment-info {
-            display: flex;
-            justify-content: space-between;
             font-size: 14px;
-            color: #666666;
+            animation: footerAnimation 1s ease-in-out;
         }
 
-        .comment-text {
-            margin-top: 8px;
+        @keyframes footerAnimation {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
-        .rating-label {
-            text-align: center;
-            font-weight: bold;
-            margin-bottom: 10px;
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            .tourist-spot {
+                padding: 15px;
+            }
         }
 
-        .star {
-            font-size: 30px;
-            cursor: pointer;
-            color: #FFD700;
-        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 36px;
+            }
 
-        .star:hover {
-            color: #FFC107;
-        }
+            .sub-title {
+                font-size: 18px;
+            }
 
-        .submit-button {
-            margin-top: 15px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+            .logo {
+                width: 40px;
+            }
 
-        .submit-button:hover {
-            background-color: var(--secondary-color);
-        }
+            .tourist-spot h3 {
+                font-size: 20px;
+            }
 
-        .comments-about-website {
-            margin-top: 40px;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .comments-about-website h2 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        .comments-about-website .comment-container {
-            width: 100%;
-            margin-top: 20px;
-            flex-grow: 1;
-            overflow-y: auto;
+            .tourist-spot p {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="header-content">
@@ -233,103 +266,22 @@
             <img src="plazas.jpg" alt="Plazas">
         </div>
 
-        <div class="tourist-spot" onclick="window.location.href='zona-deportiva.html'">
+        <div class="tourist-spot" onclick="window.location.href='zona deportiva.html'">
             <h3>Zona Deportiva</h3>
             <p>El Tepalcate</p>
             <img src="zona-deportiva.jpg" alt="Zona Deportiva">
         </div>
 
-        <div class="comments-section">
-            <h2>Comentarios</h2>
-            <input type="text" id="username" placeholder="Ingresa tu nombre" required>
-            <textarea rows="4" cols="50" placeholder="Deja tu comentario aquí..." id="commentInput" required></textarea>
-            <br>
-            <div class="rating-label">Calificación de la página web</div>
-            <div class="star-rating">
-                <span class="star" onclick="rate(1)">&#9733;</span>
-                <span class="star" onclick="rate(2)">&#9733;</span>
-                <span class="star" onclick="rate(3)">&#9733;</span>
-                <span class="star" onclick="rate(4)">&#9733;</span>
-                <span class="star" onclick="rate(5)">&#9733;</span>
-            </div>
-            <p id="ratingResult"></p>
-            <button class="submit-button" onclick="submitComment()">Enviar Comentario</button>
-        </div>
-
-        <div class="comments-about-website">
-            <h2>Comentarios acerca de la página web</h2>
-            <div class="comment-container" id="commentContainer"></div>
+        <div class="tourist-spot" onclick="window.location.href='museos.html'">
+            <h3>Museos</h3>
+            <p>Canto del cincel</p>
+            <p>Museo del chimaltonalli</p>
+            <img src="Museo.jpg" alt="Museos">
         </div>
     </div>
 
     <footer>
         <p>&copy; 2025 Conalep Chimalhuacán</p>
     </footer>
-
-    <script>
-        let rating = 0;
-        let comments = JSON.parse(localStorage.getItem('comments')) || [];
-
-        function rate(stars) {
-            rating = stars;
-            document.getElementById('ratingResult').innerText = "Has calificado la página con " + stars + " estrella(s).";
-        }
-
-        function submitComment() {
-            const usernameInput = document.getElementById('username');
-            const commentInput = document.getElementById('commentInput');
-            const comment = commentInput.value.trim();
-            const username = usernameInput.value.trim();
-            const commentContainer = document.getElementById('commentContainer');
-
-            if (comment === '' || username === '' || rating === 0) {
-                alert('Debes escribir un comentario, ingresar tu nombre y seleccionar una calificación de estrellas.');
-                return;
-            }
-
-            const commentElement = document.createElement('div');
-            commentElement.classList.add('comment');
-
-            const commentInfo = document.createElement('div');
-            commentInfo.classList.add('comment-info');
-            const ratingStars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
-            commentInfo.textContent = `${username} - ${ratingStars} - ${new Date().toLocaleString()}`;
-
-            const commentText = document.createElement('div');
-            commentText.classList.add('comment-text');
-            commentText.textContent = comment;
-
-            commentElement.appendChild(commentInfo);
-            commentElement.appendChild(commentText);
-            commentContainer.appendChild(commentElement);
-
-            comments.push({ username, comment, rating, timestamp: new Date().toLocaleString() });
-            localStorage.setItem('comments', JSON.stringify(comments));
-
-            commentInput.value = '';
-            usernameInput.value = '';
-            rating = 0;
-            document.getElementById('ratingResult').textContent = '';
-        }
-
-        // Cargar los comentarios guardados en el localStorage
-        comments.forEach(({ username, comment, rating, timestamp }) => {
-            const commentElement = document.createElement('div');
-            commentElement.classList.add('comment');
-
-            const commentInfo = document.createElement('div');
-            commentInfo.classList.add('comment-info');
-            const ratingStars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
-            commentInfo.textContent = `${username} - ${ratingStars} - ${timestamp}`;
-
-            const commentText = document.createElement('div');
-            commentText.classList.add('comment-text');
-            commentText.textContent = comment;
-
-            commentElement.appendChild(commentInfo);
-            commentElement.appendChild(commentText);
-            document.getElementById('commentContainer').appendChild(commentElement);
-        });
-    </script>
 </body>
 </html>
