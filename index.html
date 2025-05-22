@@ -17,12 +17,25 @@
       }
 
       .dropdown-btn {
-          background-color: var(--primary-color);
+          background-color: #FFC107; /* Color amarillo */
           color: white;
-          padding: 10px 20px;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
           font-size: 16px;
           border: none;
           cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+      }
+
+      .dropdown-btn span {
+          width: 25px;
+          height: 3px;
+          background-color: white;
+          margin: 3px 0;
       }
 
       .dropdown-content {
@@ -32,6 +45,8 @@
           min-width: 160px;
           box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
           z-index: 1;
+          border-radius: 10px;
+          padding: 10px 0;
       }
 
       .dropdown-content a {
@@ -57,214 +72,214 @@
           --text-color: #333333;
       }
 
-       body {
-            font-family: 'Montserrat', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--background-color);
-            color: var(--text-color);
-        }
+      body {
+          font-family: 'Montserrat', Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: var(--background-color);
+          color: var(--text-color);
+      }
 
-        header {
-            background: var(--primary-color);
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            position: relative;
-            animation: headerAnimation 1s ease-in-out;
-        }
+      header {
+          background: var(--primary-color);
+          color: white;
+          padding: 20px 0;
+          text-align: center;
+          position: relative;
+          animation: headerAnimation 1s ease-in-out;
+      }
 
-        @keyframes headerAnimation {
-            0% {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+      @keyframes headerAnimation {
+          0% {
+              transform: translateY(-100%);
+              opacity: 0;
+          }
+          100% {
+              transform: translateY(0);
+              opacity: 1;
+          }
+      }
 
-        h1 {
-            font-family: 'Pacifico', cursive;
-            font-size: 48px;
-            color: white;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-            display: inline-block;
-            margin: 0 20px;
-        }
+      h1 {
+          font-family: 'Pacifico', cursive;
+          font-size: 48px;
+          color: white;
+          text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+          display: inline-block;
+          margin: 0 20px;
+      }
 
-        .logo {
-            width: 60px;
-            vertical-align: middle;
-            margin: 0 20px;
-            animation: logoAnimation 2s infinite ease-in-out;
-        }
+      .logo {
+          width: 60px;
+          vertical-align: middle;
+          margin: 0 20px;
+          animation: logoAnimation 2s infinite ease-in-out;
+      }
 
-        @keyframes logoAnimation {
-            0% {
-                transform: rotate(0deg);
-            }
-            50% {
-                transform: rotate(20deg);
-            }
-            100% {
-                transform: rotate(0deg);
-            }
-        }
+      @keyframes logoAnimation {
+          0% {
+              transform: rotate(0deg);
+          }
+          50% {
+              transform: rotate(20deg);
+          }
+          100% {
+              transform: rotate(0deg);
+          }
+      }
 
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+      .header-content {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
 
-        .sub-title {
-            margin-top: 10px;
-            font-size: 24px;
-            color: white;
-            animation: subTitleAnimation 1.5s ease-in-out;
-        }
+      .sub-title {
+          margin-top: 10px;
+          font-size: 24px;
+          color: white;
+          animation: subTitleAnimation 1.5s ease-in-out;
+      }
 
-        @keyframes subTitleAnimation {
-            0% {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+      @keyframes subTitleAnimation {
+          0% {
+              transform: translateY(50px);
+              opacity: 0;
+          }
+          100% {
+              transform: translateY(0);
+              opacity: 1;
+          }
+      }
 
-        .container {
-            width: 80%;
-            margin: 40px auto;
-        }
+      .container {
+          width: 80%;
+          margin: 40px auto;
+      }
 
-        h2 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            font-size: 36px;
-            text-align: center;
-            text-transform: uppercase;
-            font-weight: bold;
-            animation: h2Animation 1s ease-in-out;
-        }
+      h2 {
+          color: var(--primary-color);
+          margin-bottom: 20px;
+          font-size: 36px;
+          text-align: center;
+          text-transform: uppercase;
+          font-weight: bold;
+          animation: h2Animation 1s ease-in-out;
+      }
 
-        @keyframes h2Animation {
-            0% {
-                transform: scale(0.5);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
+      @keyframes h2Animation {
+          0% {
+              transform: scale(0.5);
+              opacity: 0;
+          }
+          100% {
+              transform: scale(1);
+              opacity: 1;
+          }
+      }
 
-        .tourist-spot {
-            background: white;
-            margin: 30px 0;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            animation: spotAnimation 1s ease-in-out;
-        }
+      .tourist-spot {
+          background: white;
+          margin: 30px 0;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          cursor: pointer;
+          transition: transform 0.3s ease;
+          animation: spotAnimation 1s ease-in-out;
+      }
 
-        @keyframes spotAnimation {
-            0% {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+      @keyframes spotAnimation {
+          0% {
+              transform: translateY(50px);
+              opacity: 0;
+          }
+          100% {
+              transform: translateY(0);
+              opacity: 1;
+          }
+      }
 
-        .tourist-spot:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
+      .tourist-spot:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
 
-        .tourist-spot h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            font-size: 24px;
-            font-weight: bold;
-            font-family: 'Pacifico', cursive;
-        }
+      .tourist-spot h3 {
+          color: var(--primary-color);
+          margin-bottom: 10px;
+          font-size: 24px;
+          font-weight: bold;
+          font-family: 'Pacifico', cursive;
+      }
 
-        .tourist-spot p {
-            margin-top: 5px;
-            font-size: 16px;
-        }
+      .tourist-spot p {
+          margin-top: 5px;
+          font-size: 16px;
+      }
 
-        .tourist-spot img {
-            max-width: 100%;
-            border-radius: 5px;
-            margin-top: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+      .tourist-spot img {
+          max-width: 100%;
+          border-radius: 5px;
+          margin-top: 10px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
 
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            background: var(--primary-color);
-            color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-            font-size: 14px;
-            animation: footerAnimation 1s ease-in-out;
-        }
+      footer {
+          text-align: center;
+          padding: 20px 0;
+          background: var(--primary-color);
+          color: white;
+          position: relative;
+          bottom: 0;
+          width: 100%;
+          font-size: 14px;
+          animation: footerAnimation 1s ease-in-out;
+      }
 
-        @keyframes footerAnimation {
-            0% {
-                transform: translateY(100%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+      @keyframes footerAnimation {
+          0% {
+              transform: translateY(100%);
+              opacity: 0;
+          }
+          100% {
+              transform: translateY(0);
+              opacity: 1;
+          }
+      }
 
-        /* Estilos responsivos */
-        @media (max-width: 768px) {
-            .container {
-                width: 90%;
-            }
+      /* Estilos responsivos */
+      @media (max-width: 768px) {
+          .container {
+              width: 90%;
+          }
 
-            .tourist-spot {
-                padding: 15px;
-            }
-        }
+          .tourist-spot {
+              padding: 15px;
+          }
+      }
 
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 36px;
-            }
+      @media (max-width: 480px) {
+          h1 {
+              font-size: 36px;
+          }
 
-            .sub-title {
-                font-size: 18px;
-            }
+          .sub-title {
+              font-size: 18px;
+          }
 
-            .logo {
-                width: 40px;
-            }
+          .logo {
+              width: 40px;
+          }
 
-            .tourist-spot h3 {
-                font-size: 20px;
-            }
+          .tourist-spot h3 {
+              font-size: 20px;
+          }
 
-            .tourist-spot p {
-                font-size: 14px;
-            }
-        }
+          .tourist-spot p {
+              font-size: 14px;
+          }
+      }
   </style>
 </head>
 
@@ -277,10 +292,15 @@
       </div>
       <div class="sub-title">Tlacuilolli Chimalhuacán - Guía Turística</div>
       
-      <!-- Menú desplegable -->
+      <!-- Menú desplegable circular -->
       <div class="dropdown">
-          <button class="dropdown-btn">Menú</button>
+          <button class="dropdown-btn">
+              <span></span>
+              <span></span>
+              <span></span>
+          </button>
           <div class="dropdown-content">
+              <a href="index.html">Página Principal</a>
               <a href="zona-arqueologica.html">Zona Arqueológica</a>
               <a href="monumentos.html">Monumentos</a>
               <a href="parques.html">Parques</a>
@@ -291,48 +311,48 @@
       </div>
   </header>
 
-    <div class="container">
-        <h2>Principales Atracciones</h2>
+  <div class="container">
+      <h2>Principales Atracciones</h2>
 
-        <div class="tourist-spot" onclick="window.location.href='zona-arqueologica.html'">
-            <h3>Zona Arqueológica</h3>
-            <p>Los Pochotes</p>
-            <img src="zona-arqueologica.jpg" alt="Zona Arqueológica">
-        </div>
+      <div class="tourist-spot" onclick="window.location.href='zona-arqueologica.html'">
+          <h3>Zona Arqueológica</h3>
+          <p>Los Pochotes</p>
+          <img src="zona-arqueologica.jpg" alt="Zona Arqueológica">
+      </div>
 
-        <div class="tourist-spot" onclick="window.location.href='monumentos.html'">
-            <h3>Monumentos</h3>
-            <p>Capilla del Santo Entierro</p>
-            <p>Guerrero Chimalli</p>
-            <img src="monumentos.jpg" alt="Monumentos">
-        </div>
+      <div class="tourist-spot" onclick="window.location.href='monumentos.html'">
+          <h3>Monumentos</h3>
+          <p>Capilla del Santo Entierro</p>
+          <p>Guerrero Chimalli</p>
+          <img src="monumentos.jpg" alt="Monumentos">
+      </div>
 
-        <div class="tourist-spot" onclick="window.location.href='parques.html'">
-            <h3>Parques</h3>
-            <p>Parque Ecoturístico el Chimalhuache</p>
-            <img src="parques.jpg" alt="Parques">
-        </div>
+      <div class="tourist-spot" onclick="window.location.href='parques.html'">
+          <h3>Parques</h3>
+          <p>Parque Ecoturístico el Chimalhuache</p>
+          <img src="parques.jpg" alt="Parques">
+      </div>
 
-        <div class="tourist-spot" onclick="window.location.href='plazas.html'">
-            <h3>Plazas</h3>
-            <p>Plaza Vidrieros</p>
-            <p>Plaza Zaragoza</p>
-            <img src="plazas.jpg" alt="Plazas">
-        </div>
+      <div class="tourist-spot" onclick="window.location.href='plazas.html'">
+          <h3>Plazas</h3>
+          <p>Plaza Vidrieros</p>
+          <p>Plaza Zaragoza</p>
+          <img src="plazas.jpg" alt="Plazas">
+      </div>
 
-        <div class="tourist-spot" onclick="window.location.href='zona deportiva.html'">
-            <h3>Zona Deportiva</h3>
-            <p>El Tepalcate</p>
-            <img src="zona-deportiva.jpg" alt="Zona Deportiva">
-        </div>
+      <div class="tourist-spot" onclick="window.location.href='zona deportiva.html'">
+          <h3>Zona Deportiva</h3>
+          <p>El Tepalcate</p>
+          <img src="zona-deportiva.jpg" alt="Zona Deportiva">
+      </div>
 
-        <div class="tourist-spot" onclick="window.location.href='museos.html'">
-            <h3>Museos</h3>
-            <p>Canto del cincel</p>
-            <p>Museo del chimaltonalli</p>
-            <img src="Museo.jpg" alt="Museos">
-        </div>
-    </div>
+      <div class="tourist-spot" onclick="window.location.href='museos.html'">
+          <h3>Museos</h3>
+          <p>Canto del cincel</p>
+          <p>Museo del chimaltonalli</p>
+          <img src="Museo.jpg" alt="Museos">
+      </div>
+  </div>
 
   <footer>
       <p>&copy; 2025 Conalep Chimalhuacán</p>

@@ -8,199 +8,267 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
 <style>
-    :root {
-        --primary-color: #007BFF;
-        --secondary-color: #FFC107;
-        --background-color: #F5F5F5;
-        --text-color: #333333;
-    }
+  /* Estilos del menú desplegable */
+  .dropdown {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: inline-block;
+  }
 
-    body {
-        font-family: 'Montserrat', Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: var(--background-color);
-        color: var(--text-color);
-    }
+  .dropdown-btn {
+      background-color: #FFC107; /* Color amarillo */
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+  }
 
-    header {
-        background: var(--primary-color);
-        color: white;
-        padding: 20px 0;
-        text-align: center;
-    }
+  .dropdown-btn span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 3px 0;
+  }
 
-    h1 {
-        font-family: 'Pacifico', cursive;
-        font-size: 48px;
-        color: white;
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-        margin: 0;
-    }
+  .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 10px;
+      padding: 10px 0;
+  }
 
-    nav {
-        background-color: #444;
-        color: white;
-        padding: 0.5rem;
-        text-align: center;
-    }
+  .dropdown-content a {
+      color: var(--text-color);
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+  }
 
-    nav a {
-        color: white;
-        margin: 0 1rem;
-        text-decoration: none;
-        font-weight: bold;
-    }
+  .dropdown-content a:hover {
+      background-color: #ddd;
+  }
 
-    .slider {
-        max-width: 100%;
-        height: 300px;
-        overflow: hidden;
-        position: relative;
-    }
+  .dropdown:hover .dropdown-content {
+      display: block;
+  }
 
-    .slides {
-        display: flex;
-        width: 100%;
-        transition: transform 1s ease;
-    }
+  :root {
+      --primary-color: #007BFF;
+      --secondary-color: #FFC107;
+      --background-color: #F5F5F5;
+      --text-color: #333333;
+  }
 
-    .slides img {
-        width: 100%;
-        height: 300px;
-        object-fit: cover;
-        flex-shrink: 0; /* Asegura que solo una imagen se muestre */
-    }
+  body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background-color);
+      color: var(--text-color);
+  }
 
-    .content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1rem;
-        padding: 2rem;
-    }
+  header {
+      background: var(--primary-color);
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+  }
 
-    .article {
-        background-color: white;
-        padding: 1rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s;
-    }
+  h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 48px;
+      color: white;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+      margin: 0;
+  }
 
-    .article:hover {
-        transform: scale(1.02);
-    }
+  nav {
+      background-color: #444;
+      color: white;
+      padding: 0.5rem;
+      text-align: center;
+  }
 
-    .article h2 {
-        color: var(--primary-color);
-        font-size: 1.5rem;
-        margin-top: 0;
-    }
+  nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+  }
 
-    .article img {
-        width: 100%;
-        max-height: 180px;
-        object-fit: cover;
-        margin: 0.5rem 0;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+  .slider {
+      max-width: 100%;
+      height: 300px;
+      overflow: hidden;
+      position: relative;
+  }
 
-    footer {
-        background-color: var(--primary-color);
-        color: white;
-        text-align: center;
-        padding: 1rem;
-        font-size: 0.9rem;
-    }
+  .slides {
+      display: flex;
+      width: 100%;
+      transition: transform 1s ease;
+  }
 
-    .slider-controls {
-        position: absolute;
-        top: 50%;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        transform: translateY(-50%);
-    }
+  .slides img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      flex-shrink: 0; /* Asegura que solo una imagen se muestre */
+  }
 
-    .slider-button {
-        background-color: rgba(255, 255, 255, 0.7);
-        border: none;
-        cursor: pointer;
-        padding: 0.5rem;
-        border-radius: 50%;
-        font-size: 1.5rem;
-    }
+  .content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      padding: 2rem;
+  }
+
+  .article {
+      background-color: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+  }
+
+  .article:hover {
+      transform: scale(1.02);
+  }
+
+  .article h2 {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      margin-top: 0;
+  }
+
+  .article img {
+      width: 100%;
+      max-height: 180px;
+      object-fit: cover;
+      margin: 0.5rem 0;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  footer {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+  }
+
+  .slider-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+  }
+
+  .slider-button {
+      background-color: rgba(255, 255, 255, 0.7);
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 50%;
+      font-size: 1.5rem;
+  }
 </style>
 </head>
 <body>
 <header>
-    <h1>Parques</h1>
+  <div class="dropdown">
+      <button class="dropdown-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+      </button>
+      <div class="dropdown-content">
+          <a href="index.html">Página Principal</a>
+          <a href="zona-arqueologica.html">Zona Arqueológica</a>
+          <a href="monumentos.html">Monumentos</a>
+          <a href="parques.html">Parques</a>
+          <a href="plazas.html">Plazas</a>
+          <a href="zona deportiva.html">Zona Deportiva</a>
+          <a href="museos.html">Museos</a>
+      </div>
+  </div>
+  <h1>Parques</h1>
 </header>
 
-<nav>
-    <a href="index.html">Página Principal</a>
-</nav>
-
 <section class="slider">
-    <div class="slides" id="slides">
-        <img src="https://example.com/image1.jpg" alt="Vista del Parque">
-        <img src="https://example.com/image2.jpg" alt="Senderos del Parque">
-        <img src="https://example.com/image3.jpg" alt="Naturaleza en el Parque">
-    </div>
-    <div class="slider-controls">
-        <button class="slider-button" id="prev">&#10094;</button>
-        <button class="slider-button" id="next">&#10095;</button>
-    </div>
+  <div class="slides" id="slides">
+      <img src="https://example.com/image1.jpg" alt="Vista del Parque">
+      <img src="https://example.com/image2.jpg" alt="Senderos del Parque">
+      <img src="https://example.com/image3.jpg" alt="Naturaleza en el Parque">
+  </div>
+  <div class="slider-controls">
+      <button class="slider-button" id="prev">&#10094;</button>
+      <button class="slider-button" id="next">&#10095;</button>
+  </div>
 </section>
 
 <section class="content">
-    <div class="article">
-        <h2>🌳 Parque Ecoturístico El Chimalhuache</h2>
-        <img src="https://example.com/image1.jpg" alt="Descripción del Parque">
-        <p>El Parque Ecoturístico El Chimalhuache es un espacio natural que promueve la conservación del medio ambiente y ofrece diversas actividades recreativas para toda la familia. Con amplias áreas verdes y senderos para caminatas, es el lugar ideal para disfrutar de la naturaleza.</p>
-    </div>
+  <div class="article">
+      <h2>🌳 Parque Ecoturístico El Chimalhuache</h2>
+      <img src="https://example.com/image1.jpg" alt="Descripción del Parque">
+      <p>El Parque Ecoturístico El Chimalhuache es un espacio natural que promueve la conservación del medio ambiente y ofrece diversas actividades recreativas para toda la familia. Con amplias áreas verdes y senderos para caminatas, es el lugar ideal para disfrutar de la naturaleza.</p>
+  </div>
 
-    <div class="article">
-        <h2>🚶‍♂️ Actividades</h2>
-        <img src="https://example.com/image2.jpg" alt="Actividades en el Parque">
-        <p>En el parque se pueden realizar actividades como senderismo, ciclismo, y avistamiento de aves. Además, hay zonas de picnic y áreas de juegos para niños, lo que lo convierte en un destino perfecto para un día en familia.</p>
-    </div>
+  <div class="article">
+      <h2>🚶‍♂️ Actividades</h2>
+      <img src="https://example.com/image2.jpg" alt="Actividades en el Parque">
+      <p>En el parque se pueden realizar actividades como senderismo, ciclismo, y avistamiento de aves. Además, hay zonas de picnic y áreas de juegos para niños, lo que lo convierte en un destino perfecto para un día en familia.</p>
+  </div>
 
-    <div class="article">
-        <h2>🌼 Flora y Fauna</h2>
-        <img src="https://example.com/image3.jpg" alt="Flora y Fauna">
-        <p>El parque alberga una gran diversidad de flora y fauna, incluyendo especies nativas de la región. Durante tu visita, podrás observar aves, mariposas y una variedad de plantas que contribuyen al ecosistema local.</p>
-    </div>
+  <div class="article">
+      <h2>🌼 Flora y Fauna</h2>
+      <img src="https://example.com/image3.jpg" alt="Flora y Fauna">
+      <p>El parque alberga una gran diversidad de flora y fauna, incluyendo especies nativas de la región. Durante tu visita, podrás observar aves, mariposas y una variedad de plantas que contribuyen al ecosistema local.</p>
+  </div>
 </section>
 
 <footer>
-    © 2025 Tlacuilolli Chimalhuacán. Todos los derechos reservados.
+  © 2025 Tlacuilolli Chimalhuacán. Todos los derechos reservados.
 </footer>
 
 <script>
-    let currentIndex = 0;
-    const slides = document.getElementById("slides");
-    const totalSlides = slides.children.length;
+  let currentIndex = 0;
+  const slides = document.getElementById("slides");
+  const totalSlides = slides.children.length;
 
-    function updateSlider() {
-        slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
+  function updateSlider() {
+      slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
 
-    setInterval(() => {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        updateSlider();
-    }, 4000);
+  setInterval(() => {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateSlider();
+  }, 4000);
 
-    document.getElementById("prev").addEventListener("click", () => {
-        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        updateSlider();
-    });
+  document.getElementById("prev").addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      updateSlider();
+  });
 
-    document.getElementById("next").addEventListener("click", () => {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        updateSlider();
-    });
+  document.getElementById("next").addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateSlider();
+  });
 </script>
 </body>
 </html>

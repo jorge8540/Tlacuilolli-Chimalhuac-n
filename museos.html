@@ -8,6 +8,62 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
 <style>
+/* Estilos del menú desplegable */
+.dropdown {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: inline-block;
+}
+
+.dropdown-btn {
+    background-color: #FFC107; /* Color amarillo */
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.dropdown-btn span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 10px;
+    padding: 10px 0;
+}
+
+.dropdown-content a {
+    color: var(--text-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 :root {
     --primary-color: #007BFF;
     --secondary-color: #FFC107;
@@ -135,21 +191,33 @@ footer {
 </head>
 <body>
 <header>
+<div class="dropdown">
+    <button class="dropdown-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="dropdown-content">
+        <a href="index.html">Página Principal</a>
+        <a href="zona-arqueologica.html">Zona Arqueológica</a>
+        <a href="monumentos.html">Monumentos</a>
+        <a href="parques.html">Parques</a>
+        <a href="plazas.html">Plazas</a>
+        <a href="zona deportiva.html">Zona Deportiva</a>
+        <a href="museos.html">Museos</a>
+    </div>
+</div>
 <h1>Museos</h1>
 </header>
 
-<nav>
-<a href="index.html">Página Principal</a>
-</nav>
-
 <section class="slider">
 <div class="slides" id="slides">
-    <img src="https://example.com/canto_del_cincel.jpg" alt="Museo Canto del Cincel">
-    <img src="https://example.com/chimaltonalli.jpg" alt="Museo del Chimaltonalli">
+  <img src="https://example.com/canto_del_cincel.jpg" alt="Museo Canto del Cincel">
+  <img src="https://example.com/chimaltonalli.jpg" alt="Museo del Chimaltonalli">
 </div>
 <div class="slider-controls">
-    <button class="slider-button" id="prev">&#10094;</button>
-    <button class="slider-button" id="next">&#10095;</button>
+  <button class="slider-button" id="prev">&#10094;</button>
+  <button class="slider-button" id="next">&#10095;</button>
 </div>
 </section>
 
@@ -201,22 +269,22 @@ const slides = document.getElementById("slides");
 const totalSlides = slides.children.length;
 
 function updateSlider() {
-    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+  slides.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
 
 setInterval(() => {
-    currentIndex = (currentIndex + 1) % totalSlides;
-    updateSlider();
+  currentIndex = (currentIndex + 1) % totalSlides;
+  updateSlider();
 }, 4000);
 
 document.getElementById("prev").addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-    updateSlider();
+  currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+  updateSlider();
 });
 
 document.getElementById("next").addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % totalSlides;
-    updateSlider();
+  currentIndex = (currentIndex + 1) % totalSlides;
+  updateSlider();
 });
 </script>
 </body>
