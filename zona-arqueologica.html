@@ -1,24 +1,24 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>zonas arqueologicas</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
-<style>
-    /* Estilos del menú desplegable */
-    .dropdown {
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zonas Arqueológicas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap"
+      rel="stylesheet" />
+    <style>
+      .dropdown {
         position: absolute;
         top: 20px;
         left: 20px;
         display: inline-block;
-    }
+      }
 
-    .dropdown-btn {
-        background-color: #FFC107; /* Color amarillo */
+      .dropdown-btn {
+        background-color: #ffc107;
         color: white;
         width: 50px;
         height: 50px;
@@ -30,246 +30,336 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-    }
+      }
 
-    .dropdown-btn span {
+      .dropdown-btn span {
         width: 25px;
         height: 3px;
         background-color: white;
         margin: 3px 0;
-    }
+      }
 
-    .dropdown-content {
+      .dropdown-content {
         display: none;
         position: absolute;
         background-color: #f1f1f1;
         min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
         border-radius: 10px;
         padding: 10px 0;
-    }
+      }
 
-    .dropdown-content a {
+      .dropdown-content a {
         color: var(--text-color);
         padding: 12px 16px;
         text-decoration: none;
         display: block;
-    }
+      }
 
-    .dropdown-content a:hover {
+      .dropdown-content a.active {
+        color: var(--primary-color);
+        font-weight: bold;
+      }
+
+      .dropdown-content a:hover {
         background-color: #ddd;
-    }
+      }
 
-    .dropdown:hover .dropdown-content {
+      .dropdown:hover .dropdown-content {
         display: block;
-    }
+      }
 
-    :root {
-        --primary-color: #007BFF;
-        --secondary-color: #FFC107;
-        --background-color: #F5F5F5;
+      :root {
+        --primary-color: #007bff;
+        --secondary-color: #ffc107;
+        --background-color: #f5f5f5;
         --text-color: #333333;
-    }
+      }
 
-    body {
-        font-family: 'Montserrat', Arial, sans-serif;
+      body {
+        font-family: "Montserrat", Arial, sans-serif;
         margin: 0;
         padding: 0;
         background-color: var(--background-color);
         color: var(--text-color);
-    }
+      }
 
-    header {
+      header {
         background: var(--primary-color);
         color: white;
         padding: 20px 0;
         text-align: center;
-    }
+      }
 
-    h1 {
-        font-family: 'Pacifico', cursive;
+      h1 {
+        font-family: "Pacifico", cursive;
         font-size: 48px;
         color: white;
         text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
         margin: 0;
-    }
+      }
 
-    nav {
-        background-color: #444;
-        color: white;
-        padding: 0.5rem;
-        text-align: center;
-    }
-
-    nav a {
-        color: white;
-        margin: 0 1rem;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    .slider {
-        max-width: 100%;
-        height: 300px;
-        overflow: hidden;
-        position: relative;
-    }
-
-    .slides {
-        display: flex;
-        width: 100%;
-        transition: transform 1s ease;
-    }
-
-    .slides img {
-        width: 100%;
-        height: 300px;
-        object-fit: cover;
-        flex-shrink: 0; /* Asegura que solo una imagen se muestre */
-    }
-
-    .content {
+      .content {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 1rem;
         padding: 2rem;
-    }
+      }
 
-    .article {
+      .article {
         background-color: white;
         padding: 1rem;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: transform 0.2s;
-    }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
 
-    .article:hover {
+      .article:hover {
         transform: scale(1.02);
-    }
+      }
 
-    .article h2 {
+      .article h2 {
         color: var(--primary-color);
         font-size: 1.5rem;
         margin-top: 0;
-    }
+      }
 
-    .article img {
-        width: 100%;
-        max-height: 180px;
+      .article img {
+        width: 90%;
+        max-height: 120px;
         object-fit: cover;
-        margin: 0.5rem 0;
+        margin: 0.5rem 0 1rem;
         border-radius: 5px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+      }
 
-    footer {
+      .inline-img {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+        vertical-align: middle;
+        margin-right: 8px;
+        filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.15));
+      }
+
+      .heading-with-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 0.5rem;
+      }
+
+      footer {
         background-color: var(--primary-color);
         color: white;
         text-align: center;
         padding: 1rem;
         font-size: 0.9rem;
-    }
+      }
 
-    .slider-controls {
-        position: absolute;
-        top: 50%;
+      #map {
         width: 100%;
-        display: flex;
-        justify-content: space-between;
-        transform: translateY(-50%);
-    }
+        height: 400px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 2rem 0;
+      }
 
-    .slider-button {
-        background-color: rgba(255, 255, 255, 0.7);
-        border: none;
-        cursor: pointer;
-        padding: 0.5rem;
-        border-radius: 50%;
-        font-size: 1.5rem;
-    }
-</style>
-</head>
+      #address-section {
+        background-color: white;
+        max-width: 700px;
+        margin: 2rem auto;
+        padding: 1.5rem 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        text-align: center;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+      }
+
+      .carrusel {
+          position: relative;
+          max-width: 400px; /* Tamaño ajustado a 400px */
+          margin: 20px auto; /* Centrado */
+          overflow: hidden;
+          border: 2px solid #ccc;
+          border-radius: 10px;
+      }
+      .imagenes {
+          display: flex;
+          transition: transform 0.5s ease;
+          width: 100%; /* Ajustar al 100% */
+      }
+      .imagen {
+          min-width: 100%;
+          height: auto; /* Mantener proporción */
+          object-fit: contain; /* Ajustar sin recortar */
+          box-sizing: border-box;
+      }
+      .botones {
+          position: absolute;
+          top: 50%;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          transform: translateY(-50%);
+      }
+      .boton {
+          background-color: rgba(255, 255, 255, 0.8);
+          border: none;
+          padding: 10px;
+          cursor: pointer;
+          border-radius: 5px;
+          font-size: 18px;
+      }
+    </style>
+  </head>
 <body>
-<header>
+  <header>
     <div class="dropdown">
-        <button class="dropdown-btn">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <div class="dropdown-content">
-            <a href="index.html">Página Principal</a>
-            <a href="zona-arqueologica.html">Zona Arqueológica</a>
-            <a href="monumentos.html">Monumentos</a>
-            <a href="parques.html">Parques</a>
-            <a href="plazas.html">Plazas</a>
-            <a href="zona deportiva.html">Zona Deportiva</a>
-            <a href="museos.html">Museos</a>
-        </div>
+      <button class="dropdown-btn" aria-label="Menú principal">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="dropdown-content" role="menu">
+        <a href="index.html" role="menuitem">Página Principal</a>
+        <a href="zona-arqueologica.html" class="active" role="menuitem">Zona Arqueológica</a>
+        <a href="monumentos.html" role="menuitem">Monumentos</a>
+        <a href="parques.html" role="menuitem">Parques</a>
+        <a href="plazas.html" role="menuitem">Plazas</a>
+        <a href="zona_deportiva.html" role="menuitem">Zona Deportiva</a>
+        <a href="museos.html" role="menuitem">Museos</a>
+      </div>
     </div>
     <h1>Zonas Arqueológicas</h1>
-</header>
+  </header>
 
-<section class="slider">
-    <div class="slides" id="slides">
-        <img src="https://mxcity.mx/wp-content/uploads/2022/04/LOS-POCHOTES--768x512.jpeg" alt="Los Pochotes">
-        <img src="https://i0.wp.com/crcomunicacion.colorsremain.com/wp-content/uploads/2022/07/Pochote1.jpeg?w=1000&ssl=1" alt="Estructuras">
-        <img src="https://th.bing.com/th/id/R.2fc0e4b5c380985c3154164d1b1e605d?rik=kIsjEcbeKxxo%2bw&pid=ImgRaw&r=0" alt="Importancia Arqueológica">
+  <div class="carrusel">
+        <div class="imagenes">
+            <img class="imagen" src="za1.jpeg" alt="Imagen 1">
+            <img class="imagen" src="za2.jpeg" alt="Imagen 2">
+            <img class="imagen" src="za3.jpeg" alt="Imagen 3">
+            <img class="imagen" src="za4.jpeg" alt="Imagen 4">
+            <img class="imagen" src="za5.jpeg" alt="Imagen 5">
+            <img class="imagen" src="za6.jpeg" alt="Imagen 6">
+            <img class="imagen" src="za7.jpeg" alt="Imagen 7">
+            <img class="imagen" src="za8.jpeg" alt="Imagen 8">
+            <img class="imagen" src="za9.jpeg" alt="Imagen 9">
+            <img class="imagen" src="za10.jpeg" alt="Imagen 10">
+            <img class="imagen" src="za11.jpg" alt="Imagen 11">
+            <img class="imagen" src="za12.jpg" alt="Imagen 12">
+            <img class="imagen" src="za13.jpg" alt="Imagen 13">
+            <img class="imagen" src="za14.jpg" alt="Imagen 14">
+        </div>
+        <div class="botones">
+            <button class="boton" id="prev">❮</button>
+            <button class="boton" id="next">❯</button>
+        </div>
     </div>
-    <div class="slider-controls">
-        <button class="slider-button" id="prev">&#10094;</button>
-        <button class="slider-button" id="next">&#10095;</button>
-    </div>
-</section>
 
-<section class="content">
-    <div class="article">
-        <h2>Los Pochotes</h2>
-        <img src="https://mxcity.mx/wp-content/uploads/2022/04/LOS-POCHOTES--768x512.jpeg" alt="Guerrero Chimalli">
-        <p>La zona arqueológica Los Pochotes, ubicada en el Barrio de San Andrés en Chimalhuacán, Estado de México, es un sitio de gran relevancia histórica y cultural que resguarda vestigios de distintas épocas de ocupación humana en la región.</p>
-    </div>
+  <section class="content">
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon">
+        <h2>🌳 Los Pochotes</h2>
+      </div>
+      <img src="za1.jpeg" alt="Los Pochotes" />
+      <p>La zona arqueológica Los Pochotes, ubicada en el Barrio de San Andrés en Chimalhuacán, Estado de México, es un sitio de gran relevancia histórica y cultural que resguarda vestigios de distintas épocas de ocupación humana en la región.</p>
+    </article>
 
-    <div class="article">
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon"> 
         <h2>🏛️ Estructuras y Hallazgos</h2>
-        <img src="https://i0.wp.com/crcomunicacion.colorsremain.com/wp-content/uploads/2022/07/Pochote1.jpeg?w=1000&ssl=1" alt="Evento cultural">
-        <p>En Los Pochotes se encuentran restos de un palacio prehispánico conocido como el Técpan de Chimalhuacán, considerado uno de los mejor conservados del Altiplano Central. Su arquitectura muestra influencias de las culturas teotihuacana, tolteca y acolhua.</p>
-    </div>
+      </div>
+      <img src="za2.jpeg" alt="Estructuras" />
+      <p>En Los Pochotes se encuentran restos de un palacio prehispánico conocido como el Técpan de Chimalhuacán, considerado uno de los mejor conservados del Altiplano Central. Su arquitectura muestra influencias de las culturas teotihuacana, tolteca y acolhua.</p>
+    </article>
 
-    <div class="article">
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon">
         <h2>🧬 Importancia Arqueológica</h2>
-        <img src="https://th.bing.com/th/id/R.2fc0e4b5c380985c3154164d1b1e605d?rik=kIsjEcbeKxxo%2bw&pid=ImgRaw&r=0" alt="Centro urbano">
-        <p>En 1984 se descubrió el esqueleto del "Hombre de Chimalhuacán", con una antigüedad estimada de 12,000 años, lo que convierte a esta zona en una de las cunas del hombre mesoamericano. También se han encontrado restos de fauna del Pleistoceno, como colmillos de mamut y huesos de bisonte.</p>
+      </div>
+      <img src="za3.jpeg" alt="Centro urbano" />
+      <p>En 1984 se descubrió el esqueleto del "Hombre de Chimalhuacán", con una antigüedad estimada de 12,000 años, lo que convierte a esta zona en una de las cunas del hombre mesoamericano. También se han encontrado restos de fauna del Pleistoceno, como colmillos de mamut y huesos de bisonte, los cuales son exhibidos en el museo.</p>
+    </article>
+
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon">
+        <h2>📜 Historia de Los Pochotes</h2>
+      </div>
+      <img src="za4.jpeg" alt="Historia de Los Pochotes" />
+      <p>Los Pochotes fue un centro urbano importante durante el periodo Clásico y Posclásico. La zona ha proporcionado información valiosa sobre la vida cotidiana, religión y organización social de sus habitantes. Se han encontrado numerosos artefactos, incluyendo cerámica, herramientas de piedra y objetos decorativos, que reflejan la rica cultura de la región.</p>
+    </article>
+
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon">
+        <h2>🌿 Flora y Fauna</h2>
+      </div>
+      <img src="za7.jpeg" alt="Flora y Fauna" />
+      <p>La zona arqueológica de Los Pochotes no solo es rica en historia, sino también en biodiversidad. La región alberga diversas especies de flora y fauna, muchas de las cuales son endémicas. Entre las plantas destacan los nopales y magueyes, mientras que la fauna incluye aves como el cenzontle y mamíferos pequeños.</p>
+    </article>
+
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon">
+        <h2>👨‍⚕️ Trabajo Arqueológico</h2>
+      </div>
+      <img src="za5.jpeg" alt="Trabajo Arqueológico" />
+      <p>Con el trabajo arqueológico realizado durante las décadas de los 40's y 90's del siglo pasado se han reconocido tres momentos de ocupación: Preclásico (400-100 a. C.), Clásico (200-450 d. C.) y Posclásico (800-1000 d. C. y 1100-1521 d. C.).</p>
+    </article>
+  </section>
+
+  <section id="address-section" aria-label="Dirección de Los Pochotes">
+    📍 Dirección: Pochotes s/n, San Pedro, 56334 Chimalhuacán, Méx.
+  </section>
+
+  <section aria-label="Mapa de ubicación de Los Pochotes">
+    <h2>📍 Ubicación de Los Pochotes</h2>
+    <div id="map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3730.648534648884!2d-98.94990968503879!3d19.41810475336792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1e3bff1885c2b%3A0x6c05f02692443226!2sZona%20Arqueol%C3%B3gica%20de%20Chimalhuac%C3%A1n!5e0!3m2!1ses!2smx!4v1686490037925!5m2!1ses!2smx"
+        width="100%"
+        height="400"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
     </div>
-</section>
+  </section>
+  <footer>© 2025 Tlacuilolli Chimalhuacán. Todos los derechos reservados.</footer>
+  
+  <script>
+        let index = 0;
+        const images = document.querySelectorAll('.imagen');
+        const totalImages = images.length;
 
-<footer>
-    © 2025 Tlacuilolli Chimalhuacán. Todos los derechos reservados.
-</footer>
+        document.getElementById('next').addEventListener('click', () => {
+            index = (index + 1) % totalImages;
+            updateCarousel();
+        });
 
-<script>
-    let currentIndex = 0;
-    const slides = document.getElementById("slides");
-    const totalSlides = slides.children.length;
+        document.getElementById('prev').addEventListener('click', () => {
+            index = (index - 1 + totalImages) % totalImages;
+            updateCarousel();
+        });
 
-    function updateSlider() {
-        slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
+        function updateCarousel() {
+            const offset = -index * 100;
+            document.querySelector('.imagenes').style.transform = `translateX(${offset}%)`;
+        }
 
-    setInterval(() => {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        updateSlider();
-    }, 4000);
-
-    document.getElementById("prev").addEventListener("click", () => {
-        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        updateSlider();
-    });
-
-    document.getElementById("next").addEventListener("click", () => {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        updateSlider();
-    });
-</script>
+        // Cambiar imagen cada 4 segundos
+        setInterval(() => {
+            index = (index + 1) % totalImages;
+            updateCarousel();
+        }, 4000); // 4000 ms = 4 segundos
+  </script>
 </body>
 </html>

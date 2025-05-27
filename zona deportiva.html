@@ -10,235 +10,240 @@
 <style>
 /* Estilos del menú desplegable */
 .dropdown {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    display: inline-block;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: inline-block;
 }
 
 .dropdown-btn {
-    background-color: #FFC107; /* Color amarillo */
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  background-color: #FFC107; /* Color amarillo */
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .dropdown-btn span {
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    margin: 3px 0;
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 3px 0;
 }
 
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    border-radius: 10px;
-    padding: 10px 0;
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 10px;
+  padding: 10px 0;
 }
 
 .dropdown-content a {
-    color: var(--text-color);
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+  color: var(--text-color);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a.active {
+  color: var(--primary-color);
+  font-weight: bold;
 }
 
 .dropdown-content a:hover {
-    background-color: #ddd;
+  background-color: #ddd;
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
+  display: block;
 }
 
 :root {
-    --primary-color: #007BFF;
-    --secondary-color: #FFC107;
-    --background-color: #F5F5F5;
-    --text-color: #333333;
+  --primary-color: #007BFF;
+  --secondary-color: #FFC107;
+  --background-color: #F5F5F5;
+  --text-color: #333333;
 }
 
 body {
-    font-family: 'Montserrat', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--background-color);
-    color: var(--text-color);
+  font-family: 'Montserrat', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 header {
-    background: var(--primary-color);
-    color: white;
-    padding: 20px 0;
-    text-align: center;
+  background: var(--primary-color);
+  color: white;
+  padding: 20px 0;
+  text-align: center;
 }
 
 h1 {
-    font-family: 'Pacifico', cursive;
-    font-size: 48px;
-    color: white;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-    margin: 0;
+  font-family: 'Pacifico', cursive;
+  font-size: 48px;
+  color: white;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  margin: 0;
 }
 
 nav {
-    background-color: #444;
-    color: white;
-    padding: 0.5rem;
-    text-align: center;
+  background-color: #444;
+  color: white;
+  padding: 0.5rem;
+  text-align: center;
 }
 
 nav a {
-    color: white;
-    margin: 0 1rem;
-    text-decoration: none;
-    font-weight: bold;
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .slider {
-    max-width: 100%;
-    height: 300px;
-    overflow: hidden;
-    position: relative;
+  max-width: 100%;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
 }
 
 .slides {
-    display: flex;
-    width: 100%;
-    transition: transform 1s ease;
+  display: flex;
+  width: 100%;
+  transition: transform 1s ease;
 }
 
 .slides img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    flex-shrink: 0; /* Asegura que solo una imagen se muestre */
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  flex-shrink: 0; /* Asegura que solo una imagen se muestre */
 }
 
 .content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1rem;
-    padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
 }
 
 .article {
-    background-color: white;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
 }
 
 .article:hover {
-    transform: scale(1.02);
+  transform: scale(1.02);
 }
 
 .article h2 {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    margin-top: 0;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  margin-top: 0;
 }
 
 .article img {
-    width: 100%;
-    max-height: 180px;
-    object-fit: cover;
-    margin: 0.5rem 0;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  margin: 0.5rem 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 footer {
-    background-color: var(--primary-color);
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
+  background-color: var(--primary-color);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
 }
 
 .slider-controls {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
 }
 
 .slider-button {
-    background-color: rgba(255, 255, 255, 0.7);
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 50%;
-    font-size: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
 }
 </style>
 </head>
 <body>
 <header>
 <div class="dropdown">
-    <button class="dropdown-btn">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-    <div class="dropdown-content">
-        <a href="index.html">Página Principal</a>
-        <a href="zona-arqueologica.html">Zona Arqueológica</a>
-        <a href="monumentos.html">Monumentos</a>
-        <a href="parques.html">Parques</a>
-        <a href="plazas.html">Plazas</a>
-        <a href="zona deportiva.html">Zona Deportiva</a>
-        <a href="museos.html">Museos</a>
-    </div>
+  <button class="dropdown-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+  </button>
+  <div class="dropdown-content">
+      <a href="index.html">Página Principal</a>
+      <a href="zona-arqueologica.html">Zona Arqueológica</a>
+      <a href="monumentos.html">Monumentos</a>
+      <a href="parques.html">Parques</a>
+      <a href="plazas.html">Plazas</a>
+      <a href="zona deportiva.html" class="active">Zona Deportiva</a>
+      <a href="museos.html">Museos</a>
+  </div>
 </div>
 <h1>Zona Deportiva</h1>
 </header>
 
 <section class="slider">
 <div class="slides" id="slides">
-    <img src="https://example.com/image1.jpg" alt="Vista de la Zona Deportiva">
-    <img src="https://example.com/image2.jpg" alt="Instalaciones Deportivas">
-    <img src="https://example.com/image3.jpg" alt="Actividades Deportivas">
+  <img src="https://example.com/image1.jpg" alt="Vista de la Zona Deportiva">
+  <img src="https://example.com/image2.jpg" alt="Instalaciones Deportivas">
+  <img src="https://example.com/image3.jpg" alt="Actividades Deportivas">
 </div>
 <div class="slider-controls">
-    <button class="slider-button" id="prev">&#10094;</button>
-    <button class="slider-button" id="next">&#10095;</button>
+  <button class="slider-button" id="prev">&#10094;</button>
+  <button class="slider-button" id="next">&#10095;</button>
 </div>
 </section>
 
 <section class="content">
 <div class="article">
-    <h2>🏟️ Zona Deportiva El Tepalcate</h2>
-    <img src="https://example.com/image1.jpg" alt="Descripción de la Zona Deportiva">
-    <p>La Zona Deportiva El Tepalcate es un espacio dedicado a la práctica de diversas disciplinas deportivas, promoviendo un estilo de vida saludable entre los habitantes de Chimalhuacán. Cuenta con instalaciones modernas y áreas recreativas para todas las edades.</p>
+  <h2>🏟️ Zona Deportiva El Tepalcate</h2>
+  <img src="https://example.com/image1.jpg" alt="Descripción de la Zona Deportiva">
+  <p>La Zona Deportiva El Tepalcate es un espacio dedicado a la práctica de diversas disciplinas deportivas, promoviendo un estilo de vida saludable entre los habitantes de Chimalhuacán. Cuenta con instalaciones modernas y áreas recreativas para todas las edades.</p>
 </div>
 
 <div class="article">
-    <h2>🏃‍♂️ Actividades Disponibles</h2>
-    <img src="https://example.com/image2.jpg" alt="Actividades en la Zona Deportiva">
-    <p>En El Tepalcate se pueden practicar deportes como fútbol, basquetbol, voleibol y atletismo. Además, se organizan eventos deportivos y torneos que fomentan la competencia sana y el trabajo en equipo.</p>
+  <h2>🏃‍♂️ Actividades Disponibles</h2>
+  <img src="https://example.com/image2.jpg" alt="Actividades en la Zona Deportiva">
+  <p>En El Tepalcate se pueden practicar deportes como fútbol, basquetbol, voleibol y atletismo. Además, se organizan eventos deportivos y torneos que fomentan la competencia sana y el trabajo en equipo.</p>
 </div>
 
 <div class="article">
-    <h2>🌳 Espacios Recreativos</h2>
-    <img src="https://example.com/image3.jpg" alt="Espacios Recreativos">
-    <p>La zona cuenta con áreas verdes, zonas de descanso y espacios para realizar actividades al aire libre, ideales para disfrutar en familia y con amigos.</p>
+  <h2>🌳 Espacios Recreativos</h2>
+  <img src="https://example.com/image3.jpg" alt="Espacios Recreativos">
+  <p>La zona cuenta con áreas verdes, zonas de descanso y espacios para realizar actividades al aire libre, ideales para disfrutar en familia y con amigos.</p>
 </div>
 </section>
 
@@ -252,22 +257,22 @@ const slides = document.getElementById("slides");
 const totalSlides = slides.children.length;
 
 function updateSlider() {
-    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+  slides.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
 
 setInterval(() => {
-    currentIndex = (currentIndex + 1) % totalSlides;
-    updateSlider();
+  currentIndex = (currentIndex + 1) % totalSlides;
+  updateSlider();
 }, 4000);
 
 document.getElementById("prev").addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-    updateSlider();
+  currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+  updateSlider();
 });
 
 document.getElementById("next").addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % totalSlides;
-    updateSlider();
+  currentIndex = (currentIndex + 1) % totalSlides;
+  updateSlider();
 });
 </script>
 </body>
