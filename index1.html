@@ -1,0 +1,51 @@
+
+<section class="content">
+<div class="article">
+  <h2>🏟️ Zona Deportiva El Tepalcate</h2>
+  <img src="https://example.com/image1.jpg" alt="Descripción de la Zona Deportiva">
+  <p>La Zona Deportiva El Tepalcate es un espacio dedicado a la práctica de diversas disciplinas deportivas, promoviendo un estilo de vida saludable entre los habitantes de Chimalhuacán. Cuenta con instalaciones modernas y áreas recreativas para todas las edades.</p>
+</div>
+
+<div class="article">
+  <h2>🏃‍♂️ Actividades Disponibles</h2>
+  <img src="https://example.com/image2.jpg" alt="Actividades en la Zona Deportiva">
+  <p>En El Tepalcate se pueden practicar deportes como fútbol, basquetbol, voleibol y atletismo. Además, se organizan eventos deportivos y torneos que fomentan la competencia sana y el trabajo en equipo.</p>
+</div>
+
+<div class="article">
+  <h2>🌳 Espacios Recreativos</h2>
+  <img src="https://example.com/image3.jpg" alt="Espacios Recreativos">
+  <p>La zona cuenta con áreas verdes, zonas de descanso y espacios para realizar actividades al aire libre, ideales para disfrutar en familia y con amigos.</p>
+</div>
+</section>
+
+<footer>
+© 2025 Tlacuilolli Chimalhuacán. Todos los derechos reservados.
+</footer>
+
+<script>
+let currentIndex = 0;
+const slides = document.getElementById("slides");
+const totalSlides = slides.children.length;
+
+function updateSlider() {
+  slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
+
+setInterval(() => {
+  currentIndex = (currentIndex + 1) % totalSlides;
+  updateSlider();
+}, 4000);
+
+document.getElementById("prev").addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+  updateSlider();
+});
+
+document.getElementById("next").addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % totalSlides;
+  updateSlider();
+});
+</script>
+</body>
+</html>
