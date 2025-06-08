@@ -1,51 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zonas Deportivas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap"
+      rel="stylesheet" />
+    <style>
+      .dropdown {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        display: inline-block;
+      }
 
-<section class="content">
-<div class="article">
-  <h2>🏟️ Zona Deportiva El Tepalcate</h2>
-  <img src="https://example.com/image1.jpg" alt="Descripción de la Zona Deportiva">
-  <p>La Zona Deportiva El Tepalcate es un espacio dedicado a la práctica de diversas disciplinas deportivas, promoviendo un estilo de vida saludable entre los habitantes de Chimalhuacán. Cuenta con instalaciones modernas y áreas recreativas para todas las edades.</p>
-</div>
+      .dropdown-btn {
+        background-color: #ffc107;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
 
-<div class="article">
-  <h2>🏃‍♂️ Actividades Disponibles</h2>
-  <img src="https://example.com/image2.jpg" alt="Actividades en la Zona Deportiva">
-  <p>En El Tepalcate se pueden practicar deportes como fútbol, basquetbol, voleibol y atletismo. Además, se organizan eventos deportivos y torneos que fomentan la competencia sana y el trabajo en equipo.</p>
-</div>
+      .dropdown-btn span {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 3px 0;
+      }
 
-<div class="article">
-  <h2>🌳 Espacios Recreativos</h2>
-  <img src="https://example.com/image3.jpg" alt="Espacios Recreativos">
-  <p>La zona cuenta con áreas verdes, zonas de descanso y espacios para realizar actividades al aire libre, ideales para disfrutar en familia y con amigos.</p>
-</div>
-</section>
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border-radius: 10px;
+        padding: 10px 0;
+      }
 
-<footer>
-© 2025 Tlacuilolli Chimalhuacán. Todos los derechos reservados.
-</footer>
+      .dropdown-content a {
+        color: var(--text-color);
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
 
-<script>
-let currentIndex = 0;
-const slides = document.getElementById("slides");
-const totalSlides = slides.children.length;
+      .dropdown-content a.active {
+        color: var(--primary-color);
+        font-weight: bold;
+      }
 
-function updateSlider() {
-  slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-}
+      .dropdown-content a:hover {
+        background-color: #ddd;
+      }
 
-setInterval(() => {
-  currentIndex = (currentIndex + 1) % totalSlides;
-  updateSlider();
-}, 4000);
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
 
-document.getElementById("prev").addEventListener("click", () => {
-  currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-  updateSlider();
-});
+      :root {
+        --primary-color: #007bff;
+        --secondary-color: #ffc107;
+        --background-color: #f5f5f5;
+        --text-color: #333333;
+      }
 
-document.getElementById("next").addEventListener("click", () => {
-  currentIndex = (currentIndex + 1) % totalSlides;
-  updateSlider();
-});
-</script>
+      body {
+        font-family: "Montserrat", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--background-color);
+        color: var(--text-color);
+      }
+
+      header {
+        background: var(--primary-color);
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+      }
+
+      h1 {
+        font-family: "Pacifico", cursive;
+        font-size: 48px;
+        color: white;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        margin: 0;
+      }
+
+      .content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+        padding: 2rem;
+      }
+
+      .article {
+        background-color: white;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .article:hover {
+        transform: scale(1.02);
+      }
+
+      .article h2 {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin-top: 0;
+      }
+
+      .article img {
+        width: 90%;
+        max-height: 120px;
+        object-fit: cover;
+        margin: 0.5rem 0 1rem;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .inline-img {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+        vertical-align: middle;
+        margin-right: 8px;
+        filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.15));
+      }
+
+      .heading-with-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 0.5rem;
+      }
+
+      footer {
+        background-color: var(--primary-color);
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.9rem;
+      }
+
+      #map {
+        width: 100%;
+        height: 400px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 2rem 0;
+      }
+
+      #address-section {
+        background-color: white;
+        max-width: 700px;
+        margin: 2rem auto;
+        padding: 1.5rem 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        text-align: center;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+      }
+
+      .carrusel {
+          position: relative;
+          max-width: 400px; /* Tamaño ajustado a 400px */
+          margin: 20px auto; /* Centrado */
+          overflow: hidden;
+          border: 2px solid #ccc;
+          border-radius: 10px;
+      }
+      .imagenes {
+          display: flex;
+          transition: transform 0.5s ease;
+          width: 100%; /* Ajustar al 100% */
+      }
+      .imagen {
+          min-width: 100%;
+          height: auto; /* Mantener proporción */
+          object-fit: contain; /* Ajustar sin recortar */
+          box-sizing: border-box;
+      }
+      .botones {
+          position: absolute;
+          top: 50%;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          transform: translateY(-50%);
+      }
+      .boton {
+          background-color: rgba(255, 255, 255, 0.8);
+          border: none;
+          padding: 10px;
+          cursor: pointer;
+          border-radius: 5px;
+          font-size: 18px;
+      }
+
+      footer {
+        background-color: var(--primary-color);
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.9rem;
+        width: 100%; /* Ajustar el ancho al 100% */
+      }
+    </style>
+  </head>
+<body>
+  <header>
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-label="Menú principal">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="dropdown-content" role="menu">
+        <a href="index.html" role="menuitem">Página Principal</a>
+        <a href="zona-arqueologica.html"  role="menuitem">Zonas Arqueológicas</a>
+        <a href="monumentos.html" role="menuitem">Monumentos</a>
+        <a href="parques.html" role="menuitem">Parques</a>
+        <a href="plazas.html" role="menuitem">Plazas</a>
+        <a href="zona deportiva.html" class="active" role="menuitem">Zona Deportiva</a>
+        <a href="museos.html" role="menuitem">Museos</a>
+      </div>
+    </div>
+    <h1>Zonas Deportivas</h1>
+  </header>
+
+  <div class="carrusel">
+    <div class="imagenes">
+      <img class="imagen" src="" alt="Imagen 1">
+      <img class="imagen" src="" alt="Imagen 2">
+      <img class="imagen" src="" alt="Imagen 3">
+      <img class="imagen" src="" alt="Imagen 4">
+      <img class="imagen" src="" alt="Imagen 5">
+      <img class="imagen" src="" alt="Imagen 6">
+      <img class="imagen" src="" alt="Imagen 7">
+      <img class="imagen" src="" alt="Imagen 8">
+      <img class="imagen" src="" alt="Imagen 9">
+      <img class="imagen" src="" alt="Imagen 10">
+      <img class="imagen" src="" alt="Imagen 11">
+      <img class="imagen" src="" alt="Imagen 12">
+      <img class="imagen" src="" alt="Imagen 13">
+      <img class="imagen" src="" alt="Imagen 14">
+      <img class="imagen" src="" alt="imagen 15">
+      <img class="imagen" src="" alt="imagen 16">
+      <img class="imagen" src="" alt="imagen 17">
+      <img class="imagen" src="" alt="imagen 18">
+      <img class="imagen" src="" alt="imagen 19">
+      <img class="imagen" src="" alt="imagen 20">
+      <img class="imagen" src="" alt="imagen 21">
+      <img class="imagen" src="" alt="imagen 22">
+      <img class="imagen" src="" alt="imagen 23">
+      <img class="imagen" src="" alt="imagen 24">
+      <img class="imagen" src="" alt="iamgen 25">
+      <img class="imagen" src="" alt="imagen 26">
+      <img class="imagen" src="" alt="imagen 27">
+      <img class="imagen" src="" alt="imagen 28">
+
+    </div>
+    <div class="botones">
+      <button class="boton" id="prev">❮</button>
+      <button class="boton" id="next">❯</button>
+    </div>
+  </div>
+
+  <section class="content">
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon">
+        <h2>🏟️ Zona Deportiva El Tepalcate</h2>
+      </div>
+      <img src="parque.jpg" alt="Los Pochotes" />
+      <p>La Zona Deportiva El Tepalcate es un espacio dedicado a la práctica de diversas disciplinas deportivas, promoviendo un estilo de vida saludable entre los habitantes de Chimalhuacán. Cuenta con instalaciones modernas y áreas recreativas para todas las edades.</p>
+    </article>
+
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon"> 
+        <h2>🏃‍♂️ Actividades Disponibles</h2>
+      </div>
+      <img src="pc2.jpg" alt="Estructuras" />
+      <p>En El Tepalcate se pueden practicar deportes como fútbol, basquetbol, voleibol y atletismo. Además, se organizan eventos deportivos y torneos que fomentan la competencia sana y el trabajo en equipo.</p>
+    </article>
+
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon">
+        <h2>🌳 Espacios Recreativos</h2>
+      </div>
+      <img src="pc6.jpg" alt="Centro urbano" />
+      <p>La zona cuenta con áreas verdes, zonas de descanso y espacios para realizar actividades al aire libre, ideales para disfrutar en familia y con amigos.</p>
+    </article>
+
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon">
+        <h2>🌳 Área Recreativa</h2>
+      </div>
+      <img src="pc3.jpg" alt="Área Recreativa" />
+      <p>El Parque Ecoturístico El Chimalhuache cuenta con amplias áreas verdes y espacios recreativos, como canchas deportivas, zonas de juegos infantiles y áreas de picnic. Estos espacios permiten a los visitantes disfrutar de actividades al aire libre en un entorno natural y relajante.</p>
+    </article>
+
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon">
+        <h2>🌱 Conservación Ambiental</h2>
+      </div>
+      <img src="pc14.jpg" alt="Conservación Ambiental" />
+      <p>El parque se enfoca en la conservación del medio ambiente, promoviendo prácticas sostenibles y la educación ambiental. Cuenta con programas de reforestación, manejo de residuos y cuidado de los ecosistemas locales, convirtiéndolo en un modelo de desarrollo sustentable.</p>
+    </article>
+
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon">
+        <h2>🌳 Senderos y Miradores</h2>
+      </div>
+      <img src="pc13.jpg" alt="Senderos y Miradores" />
+      <p>El parque ofrece una red de senderos y miradores que permiten a los visitantes explorar y disfrutar de la belleza natural del lugar. Estos recorridos brindan la oportunidad de apreciar la flora y fauna, así como de obtener una vista panorámica del entorno.</p>
+    </article>
+
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon">
+        <h2>🌳 Educación Ambiental</h2>
+      </div>
+      <img src="pc7.jpg" alt="Educación Ambiental" />
+      <p>El Parque Ecoturístico El Chimalhuache cuenta con programas de educación ambiental que buscan sensibilizar a los visitantes sobre la importancia de la conservación de la naturaleza. Estos incluyen talleres, charlas y actividades interactivas que fomentan el respeto y el cuidado del medio ambiente.</p>
+    </article>
+
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon">
+        <h2>🌳 Turismo Sostenible</h2>
+      </div>
+      <img src="pc5.jpg" alt="Turismo Sostenible" />
+      <p>El parque promueve el turismo sostenible, buscando minimizar el impacto ambiental de las actividades y promover prácticas responsables entre los visitantes. Esto incluye la implementación de medidas de eficiencia energética, gestión de residuos y fomento de transportes alternativos.</p>
+    </article>
+
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon">
+        <h2>🌳 Investigación Científica</h2>
+      </div>
+      <img src="pc11.jpg" alt="Investigación Científica" />
+      <p>El Parque Ecoturístico El Chimalhuache colabora con instituciones académicas y de investigación para llevar a cabo estudios sobre la biodiversidad, los ecosistemas y las prácticas de conservación. Estos esfuerzos contribuyen a ampliar el conocimiento y la protección de este valioso espacio natural.</p>
+    </article>
+
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon">
+        <h2>🌳 Albercas y Áreas Acuáticas</h2>
+      </div>
+      <img src="pc4.jpg" alt="Albercas y Áreas Acuáticas" />
+      <p>El parque cuenta con albercas recreativas y un lago artificial donde los visitantes pueden refrescarse y disfrutar de actividades acuáticas. Estas áreas están rodeadas de vegetación y ofrecen un ambiente ideal para relajarse y disfrutar del verano.</p>
+    </article>
+
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon">
+        <h2>🐦 Aviario y Observación de Aves</h2>
+      </div>
+      <img src="pc15.jpg" alt="Aviario y Observación de Aves" />
+      <p>El parque alberga un aviario donde se pueden observar diferentes especies de aves nativas de la región. Los visitantes tienen la oportunidad de apreciar de cerca la diversidad ornitológica y aprender sobre las aves y sus hábitats.</p>
+    </article>
+
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon">
+        <h2>🌌 Planetario Digital y Observación Astronómica</h2>
+      </div>
+      <img src="pc12.jpg" alt="Planetario Digital y Observación Astronómica" />
+      <p>El parque cuenta con un planetario digital donde se ofrecen proyecciones y charlas sobre astronomía. Además, hay áreas designadas para la observación del cielo nocturno, permitiendo a los visitantes explorar los misterios del universo.</p>
+    </article>
+  </section>
+
+  <section id="address-section" aria-label="Dirección de el Parque Ecoturístico El Chimalhuache">
+    📍 Dirección: Av. La Pista, Xochiaca, 56366 Chimalhuacán, Méx.
+  </section>
+
+  <section aria-label="Mapa de ubicación de el Parque Ecoturístico El Chimalhuache">
+    <h2>📍 Ubicación de el Parque Ecoturístico El Chimalhuache</h2>
+    <div id="map">
+      <iframe
+        src="https://www.google.com/maps/place/parque+chimalhuache/data=!4m2!3m1!1s0x85d1e3a5e9c4a655:0xb210040a05a958b8?sa=X&ved=1t:155783&ictx=111" */ falta actualizar esta URL para que se pueda visualizar el mapa */
+        width="100%"
+        height="400"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
+
+  <footer>© 2025 Tlacuilolli Chimalhuacán. Todos los derechos reservados.</footer>
+
+  <script>
+    let index = 0;
+    const images = document.querySelectorAll('.imagen');
+    const totalImages = images.length;
+
+    document.getElementById('next').addEventListener('click', () => {
+      index = (index + 1) % totalImages;
+      updateCarousel();
+    });
+
+    document.getElementById('prev').addEventListener('click', () => {
+      index = (index - 1 + totalImages) % totalImages;
+      updateCarousel();
+    });
+
+    function updateCarousel() {
+      const offset = -index * 100;
+      document.querySelector('.imagenes').style.transform = `translateX(${offset}%)`;
+    }
+
+    // Cambiar imagen cada 4 segundos
+    setInterval(() => {
+      index = (index + 1) % totalImages;
+      updateCarousel();
+    }, 4000); // 4000 ms = 4 segundos
+  </script>
 </body>
 </html>
