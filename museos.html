@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Museos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap"
+      rel="stylesheet" />
+    <style>
+      .dropdown {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        display: inline-block;
+      }
+
+      .dropdown-btn {
+        background-color: #ffc107;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .dropdown-btn span {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 3px 0;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border-radius: 10px;
+        padding: 10px 0;
+      }
+
+      .dropdown-content a {
+        color: var(--text-color);
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown-content a.active {
+        color: var(--primary-color);
+        font-weight: bold;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #ddd;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      :root {
+        --primary-color: #007bff;
+        --secondary-color: #ffc107;
+        --background-color: #f5f5f5;
+        --text-color: #333333;
+      }
+
+      body {
+        font-family: "Montserrat", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--background-color);
+        color: var(--text-color);
+      }
+
+      header {
+        background: var(--primary-color);
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+        width: 100%; /* Asegura que el header ocupe todo el ancho */
+      }
+
+      h1 {
+        font-family: "Pacifico", cursive;
+        font-size: 48px;
+        color: white;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        margin: 0;
+        width: 100%; /* Asegura que el título ocupe todo el ancho */
+      }
+
+      .content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+        padding: 2rem;
+      }
+
+      .article {
+        background-color: white;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .article:hover {
+        transform: scale(1.02);
+      }
+
+      .article h2 {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin-top: 0;
+      }
+
+      .article img {
+        width: 90%;
+        max-height: 300px;
+        object-fit: cover;
+        margin: 0.5rem 0 1rem;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .inline-img {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+        vertical-align: middle;
+        margin-right: 8px;
+        filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.15));
+      }
+
+      .heading-with-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 0.5rem;
+      }
+
+      footer {
+        background-color: var(--primary-color);
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.9rem;
+        width: 100%; /* Asegura que el footer ocupe todo el ancho */
+        position: relative; /* Para evitar problemas de superposición */
+      }
+
+      #map {
+        width: 100%;
+        height: 400px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 2rem 0;
+      }
+
+      #address-section {
+        background-color: white;
+        max-width: 700px;
+        margin: 2rem auto;
+        padding: 1.5rem 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        text-align: center;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+      }
+
+      .carrusel {
+          position: relative;
+          max-width: 400px; /* Tamaño ajustado a 400px */
+          margin: 20px auto; /* Centrado */
+          overflow: hidden;
+          border: 2px solid #ccc;
+          border-radius: 10px;
+      }
+      .imagenes {
+          display: flex;
+          transition: transform 0.5s ease;
+          width: 100%; /* Ajustar al 100% */
+      }
+      .imagen {
+          min-width: 100%;
+          height: 300px; /* Altura fija para todas las imágenes */
+          object-fit: 300px; /* Ajustar sin distorsionar */
+          box-sizing: border-box;
+      }
+      .nuevo-carrusel {
+          position: relative;
+          max-width: 400px; /* Tamaño ajustado a 400px */
+          margin: 20px auto; /* Centrado */
+          overflow: hidden;
+          border: 2px solid #ccc;
+          border-radius: 10px;
+      }
+      .nuevo-imagenes {
+          display: flex;
+          transition: transform 0.5s ease;
+          width: 100%; /* Ajustar al 100% */
+      }
+      .nuevo-imagen {
+          min-width: 100%;
+          height: 300px; /* Altura fija para todas las imágenes */
+          object-fit: 350px; /* Ajustar sin distorsionar */
+          box-sizing: border-box;
+      }
+      .botones {
+          position: absolute;
+          top: 50%;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          transform: translateY(-50%);
+      }
+      .boton {
+          background-color: rgba(255, 255, 255, 0.8);
+          border: none;
+          padding: 10px;
+          cursor: pointer;
+          border-radius: 5px;
+          font-size: 18px;
+      }
+    </style>
+</head>
+<body>
+  <header>
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-label="Menú principal">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="dropdown-content" role="menu">
+        <a href="index.html" role="menuitem">Página Principal</a>
+        <a href="zona-arqueologica.html" role="menuitem">Zonas Arqueológicas</a>
+        <a href="monumentos.html" role="menuitem">Monumentos</a>
+        <a href="parques.html" role="menuitem">Parques</a>
+        <a href="plazas.html" role="menuitem">Plazas</a>
+        <a href="zona deportiva.html" role="menuitem">Zona Deportiva</a>
+        <a href="museos.html" class="active" role="menuitem">Museos</a>
+      </div>
+    </div>
+   <h1>Museos</h1>
+  </header>
+
+  <div class="carrusel">
+      <div class="imagenes">
+          <img class="imagen" src="cc1.jpg" alt="Imagen 1">
+          <img class="imagen" src="cc2.jpg" alt="Imagen 2">
+          <img class="imagen" src="cc3.jpg" alt="Imagen 3">
+          <img class="imagen" src="cc4.jpg" alt="Imagen 4">
+          <img class="imagen" src="cc5.jpg" alt="Imagen 5">
+          <img class="imagen" src="cc6.jpg" alt="Imagen 6">
+          <img class="imagen" src="cc7.jpg" alt="Imagen 7">
+          <img class="imagen" src="cc8.jpg" alt="Imagen 8">
+          <img class="imagen" src="cc9.jpg" alt="Imagen 9">
+          <img class="imagen" src="cc10.jpg" alt="Imagen 10">
+      </div>
+      <div class="botones">
+          <button class="boton" id="prev">❮</button>
+          <button class="boton" id="next">❯</button>
+      </div>
+  </div>
+
+  <section class="content">
+<div class="article">
+<h2>🏺 Museo Canto del Cincel</h2>
+<img src="cc1.jpg" alt="Museo Canto del Cincel">
+<p>El Museo Canto del Cincel es un espacio dedicado a la preservación y promoción de la cultura local. A través de exposiciones y talleres, el museo busca acercar a la comunidad a su patrimonio cultural y artístico.</p>
+</div>
+
+<div class="article">
+<h2>📍 Ubicación</h2>
+<img src="cc2.jpg" alt="Ubicación Museo Canto del Cincel">
+<p>Situado en el centro de Chimalhuacán, el museo es fácilmente accesible y está rodeado de otras atracciones culturales y recreativas.</p>
+</div>
+
+<div class="article">
+<h2>🎨 Exposiciones y Actividades</h2>
+<img src="cc5.jpg" alt="Exposiciones en Museo Canto del Cincel">
+<p>El museo alberga diversas exposiciones temporales y permanentes que destacan el arte y la tradición de la región, así como talleres para niños y adultos.</p>
+</div>
+<div class="article">
+  <h2>🕒 Horarios</h2>
+  <img src="cc3.jpg" alt="Horarios Museo Canto del Cincel">
+  <p>El museo abre sus puertas de martes a domingo, de 10:00 a 18:00 horas. Los lunes permanece cerrado al público.</p>
+</div>
+
+<div class="article">
+  <h2>🎟️ Entradas</h2>
+  <img src="cc4.jpg" alt="Entradas Museo Canto del Cincel">
+  <p>La entrada al museo es gratuita, lo que permite a todos disfrutar de las exposiciones y actividades sin costo alguno.</p>
+</div>
+
+<div class="article">
+  <h2>👥 Visitas Guiadas</h2>
+  <img src="cc6.jpg" alt="Visitas Guiadas Museo Canto del Cincel">
+  <p>Se ofrecen visitas guiadas para grupos escolares y turistas, con el fin de proporcionar una mejor comprensión de las exposiciones y la historia local. Se recomienda reservar con anticipación.</p>
+</div>
+
+<div class="article">
+  <h2>🛍️ Tienda de Souvenirs</h2>
+  <img src="cc7.jpg" alt="Tienda de Souvenirs Museo Canto del Cincel">
+  <p>El museo cuenta con una tienda de souvenirs donde los visitantes pueden adquirir artesanías locales, libros y otros recuerdos relacionados con la cultura de Chimalhuacán.</p>
+</div>
+
+<div class="article">
+  <h2>🌱 Proyectos Comunitarios</h2>
+  <img src="cc8.jpg" alt="Proyectos Comunitarios Museo Canto del Cincel">
+  <p>El museo participa en proyectos comunitarios que buscan fomentar el desarrollo cultural y social de la región, involucrando a la población en actividades artísticas y educativas.</p>
+</div>
+
+<div class="article">
+  <h2>🌍 Accesibilidad</h2>
+  <img src="cc9.jpg" alt="Accesibilidad Museo Canto del Cincel">
+  <p>El Museo Canto del Cincel es accesible para personas con discapacidad, con rampas y servicios adaptados para garantizar que todos puedan disfrutar de su visita.</p>
+</div>
+
+</section>
+
+  <section id="address-section" aria-label="Dirección de Los Pochotes">
+    📍 Dirección: 56353, Av de las Torres LT3, Saraperos, Chimalhuacán, Méx.
+  </section>
+
+<section aria-label="Mapa de ubicación de el Museo Canto del Cincel">
+  <h2>📍 Ubicación de el Museo Canto del Cincel</h2>
+  <div id="map">
+    <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3759.6978433425!2d-98.9864907!3d19.4184962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1e36cbdafc151%3A0xb9994ba59b52d258!2sMuseo%20%22Canto%20del%20Cincel%22!5e0!3m2!1ses-419!2smx!4v1685064675550!5m2!1ses-419!2smx" 
+    width="100%" 
+    height="400" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy">
+</iframe>
+  </div>
+</section>
+
+<div class="nuevo-carrusel">
+      <div class="nuevo-imagenes">
+          <img class="nuevo-imagen" src="mc1.jpg" alt="Imagen 1">
+          <img class="nuevo-imagen" src="mc2.jpg" alt="Imagen 2">
+          <img class="nuevo-imagen" src="mc3.jpg" alt="Imagen 3">
+          <img class="nuevo-imagen" src="mc4.jpg" alt="Imagen 4">
+          <img class="nuevo-imagen" src="mc5.jpg" alt="Imagen 5">
+          <img class="nuevo-imagen" src="mc6.jpg" alt="Imagen 6">
+          <img class="nuevo-imagen" src="mc7.jpg" alt="Imagen 7">
+          <img class="nuevo-imagen" src="mc8.jpg" alt="Imagen 8">
+          <img class="nuevo-imagen" src="mc9.jpg" alt="Imagen 9">
+          <img class="nuevo-imagen" src="mc10.jpg" alt="Imagen 10">
+          <img class="nuevo-imagen" src="mc11.jpg" alt="Imagen 11">
+          <img class="nuevo-imagen" src="mc12.jpg" alt="Imagen 12">
+          <img class="nuevo-imagen" src="mc13.jpg" alt="Imagen 13">
+          <img class="nuevo-imagen" src="mc14.jpg" alt="Imagen 14">
+          <img class="nuevo-imagen" src="mc15.jpg" alt="Imagen 15">
+          <img class="nuevo-imagen" src="mc16.jpg" alt="Imagen 16">
+          <img class="nuevo-imagen" src="mc17.jpg" alt="Imagen 17">
+          <img class="nuevo-imagen" src="mc18.jpg" alt="Imagen 18">
+          <img class="nuevo-imagen" src="mc19.jpg" alt="Imagen 19">
+          <img class="nuevo-imagen" src="mc20.jpg" alt="Imagen 20">
+          <img class="nuevo-imagen" src="mc21.jpg" alt="Imagen 21">
+          <img class="nuevo-imagen" src="mc22.jpg" alt="Imagen 22">
+          <img class="nuevo-imagen" src="mc23.jpg" alt="Imagen 23">
+          <img class="nuevo-imagen" src="mc24.jpg" alt="Imagen 24">
+          <img class="nuevo-imagen" src="mc25.jpg" alt="Imagen 25">
+          <img class="nuevo-imagen" src="mc26.jpg" alt="Imagen 26">
+          <img class="nuevo-imagen" src="mc27.jpg" alt="Imagen 27">
+          <img class="nuevo-imagen" src="mc28.jpg" alt="Imagen 28">
+      </div>
+      <div class="botones">
+          <button class="boton" id="prev-nuevo">❮</button>
+          <button class="boton" id="next-nuevo">❯</button>
+      </div>
+  </div>
+
+  <section class="content">
+<div class="article">
+<h2>🏛️ Museo Chimaltonalli</h2>
+<img src="mc28.jpg" alt="Museo del Chimaltonalli">
+<p>El Museo Chimaltonalli es un espacio que celebra la historia y cultura de Chimalhuacán. Ofrece una mirada profunda a las tradiciones, costumbres y la evolución de la comunidad a lo largo de los años.</p>
+</div>
+
+<div class="article">
+<h2>📍 Ubicación</h2>
+<img src="mc27.jpg" alt="Ubicación Museo del Chimaltonalli">
+<p>Ubicado en una zona estratégica, el museo es de fácil acceso para los visitantes y está cerca de otros puntos de interés en Chimalhuacán.</p>
+</div>
+
+<div class="article">
+<h2>🎉 Eventos y Programas</h2>
+<img src="mc26.jpg" alt="Eventos en Museo del Chimaltonalli">
+<p>El museo organiza eventos culturales, charlas y actividades educativas que fomentan el interés por la historia y la cultura local, creando un espacio de aprendizaje y convivencia.</p>
+</div>
+
+  <div class="article">
+    <h2>🖼️ Colección Permanente</h2>
+    <img src="mc25.jpg" alt="Colección Permanente Museo del Chimaltonalli">
+    <p>El museo alberga una colección permanente que incluye artefactos históricos, obras de arte y objetos que representan la rica herencia cultural de Chimalhuacán, permitiendo a los visitantes explorar la historia local de manera interactiva.</p>
+  </div>
+
+  <div class="article">
+    <h2>👥 Programas Educativos</h2>
+    <img src="mc24.jpg" alt="Programas Educativos Museo del Chimaltonalli">
+    <p>Se ofrecen programas educativos para escuelas y grupos comunitarios, diseñados para sensibilizar a los jóvenes sobre la importancia de la historia y la cultura de su localidad, fomentando el aprendizaje activo y la participación.</p>
+  </div>
+
+  <div class="article">
+    <h2>📚 Biblioteca y Centro de Investigación</h2>
+    <img src="mc23.jpg" alt="Biblioteca Museo del Chimaltonalli">
+    <p>El museo cuenta con una biblioteca y un centro de investigación que proporciona recursos sobre la historia y cultura de Chimalhuacán, apoyando a investigadores, estudiantes y al público en general en su búsqueda de conocimiento.</p>
+  </div>
+
+  <div class="article">
+    <h2>🎨 Talleres Artísticos</h2>
+    <img src="mc22.jpg" alt="Talleres Artísticos Museo del Chimaltonalli">
+    <p>Se realizan talleres artísticos donde los visitantes pueden aprender técnicas tradicionales de arte y artesanía, promoviendo la creatividad y la preservación de las tradiciones culturales locales.</p>
+  </div>
+
+  <div class="article">
+    <h2>🌍 Proyectos de Conservación</h2>
+    <img src="mc21.jpg" alt="Proyectos de Conservación Museo del Chimaltonalli">
+    <p>El museo está involucrado en proyectos de conservación del patrimonio cultural y natural de Chimalhuacán, trabajando en colaboración con la comunidad para preservar su legado para las futuras generaciones.</p>
+  </div>
+
+  <div class="article">
+    <h2>🤝 Colaboraciones Comunitarias</h2>
+    <img src="mc20.jpg" alt="Colaboraciones Comunitarias Museo del Chimaltonalli">
+    <p>El museo fomenta colaboraciones con organizaciones locales, artistas y académicos, creando una red de apoyo que fortalece la cultura y la identidad de Chimalhuacán a través de diversas iniciativas y proyectos conjuntos.</p>
+  </div>
+</section>
+
+<section id="address-section" aria-label="Dirección de la Plaza Zaragoza">
+    📍 Dirección: Ignacio Zaragoza Manzana 021, Predio el Molino, San Pedro, 56334 Chimalhuacán, Méx.
+  </section>
+
+  <section aria-label="Mapa de ubicación de el Museo el Chimaltonalli">
+  <h2>📍 Ubicación de el Museo Chimaltonalli</h2>
+  <div id="map">
+    <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3759.6978433425!2d-98.944066!3d19.4193983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1e3ea80f383ab%3A0x4f6193de26fa1f8!2sMuseo%20Chimaltonalli!5e0!3m2!1ses-419!2smx!4v1685064675550!5m2!1ses-419!2smx" 
+    width="100%" 
+    height="400" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy">
+</iframe>
+  </div>
+</section>
+
+  <footer>© 2025 Tlacuilolli Chimalhuacán. Todos los derechos reservados.</footer>
+  
+  <script>
+        // Carrusel original
+        let index = 0;
+        const images = document.querySelectorAll('.imagenes .imagen');
+        const totalImages = images.length;
+
+        document.getElementById('next').addEventListener('click', () => {
+            index = (index + 1) % totalImages;
+            updateCarousel();
+        });
+
+        document.getElementById('prev').addEventListener('click', () => {
+            index = (index - 1 + totalImages) % totalImages;
+            updateCarousel();
+        });
+
+        function updateCarousel() {
+            const offset = -index * 100;
+            document.querySelector('.imagenes').style.transform = `translateX(${offset}%)`;
+        }
+
+        // Cambiar imagen cada 4 segundos
+        setInterval(() => {
+            index = (index + 1) % totalImages;
+            updateCarousel();
+        }, 4000); // 4000 ms = 4 segundos
+        
+         // Nuevo carrusel
+        let nuevoIndex = 0;
+        const nuevoImages = document.querySelectorAll('.nuevo-imagenes .nuevo-imagen');
+        const totalNuevoImages = nuevoImages.length;
+
+        document.getElementById('next-nuevo').addEventListener('click', () => {
+            nuevoIndex = (nuevoIndex + 1) % totalNuevoImages;
+            updateNuevoCarousel();
+        });
+
+        document.getElementById('prev-nuevo').addEventListener('click', () => {
+            nuevoIndex = (nuevoIndex - 1 + totalNuevoImages) % totalNuevoImages;
+            updateNuevoCarousel();
+        });
+
+        function updateNuevoCarousel() {
+            const offset = -nuevoIndex * 100;
+            document.querySelector('.nuevo-imagenes').style.transform = `translateX(${offset}%)`;
+        }
+
+        // Cambiar imagen del nuevo carrusel cada 4 segundos
+        setInterval(() => {
+            nuevoIndex = (nuevoIndex + 1) % totalNuevoImages;
+            updateNuevoCarousel();
+        }, 4000); // 4000 ms = 4 segundos
+  </script>
+</body>
+</html>   
