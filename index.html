@@ -1,107 +1,366 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chimalhuacán</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chimalhuacán - Guía Turística</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+    /* Estilos del menú desplegable */
+    .dropdown {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        display: inline-block;
+    }
+
+    .dropdown-btn {
+        background-color: #FFC107; /* Color amarillo */
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .dropdown-btn span {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 3px 0;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        border-radius: 10px;
+        padding: 10px 0;
+    }
+
+    .dropdown-content a {
+        color: var(--text-color);
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a.active {
+        color: var(--primary-color);
+        font-weight: bold;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Resto de estilos */
+    :root {
+        --primary-color: #007BFF;
+        --secondary-color: #FFC107;
+        --background-color: #F5F5F5;
+        --text-color: #333333;
+    }
+
+    body {
+        font-family: 'Montserrat', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--background-color);
+        color: var(--text-color);
+    }
+
+    header {
+        background: var(--primary-color);
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+        position: relative;
+        animation: headerAnimation 1s ease-in-out;
+    }
+
+    @keyframes headerAnimation {
+        0% {
+            transform: translateY(-100%);
+            opacity: 0;
         }
-        header {
-            background: #007BFF;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-            position: relative; /* Para posicionar el h1 en el fondo */
+        100% {
+            transform: translateY(0);
+            opacity: 1;
         }
-        h1 {
-            font-size: 48px; /* Tamaño del título */
-            color: white;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 215, 0, 0.7); /* Efecto de brillo */
-            display: inline-block; /* Para que se ajuste el espacio */
-            margin: 0 20px; /* Espacio entre el título y los logos */
+    }
+
+    h1 {
+        font-family: 'Pacifico', cursive;
+        font-size: 48px;
+        color: white;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        display: inline-block;
+        margin: 0 20px;
+    }
+
+    .logo {
+        width: 60px;
+        vertical-align: middle;
+        margin: 0 20px;
+        animation: logoAnimation 2s infinite ease-in-out;
+    }
+
+    @keyframes logoAnimation {
+        0% {
+            transform: rotate(0deg);
         }
-        .logo {
-            width: 50px; /* Ajusta el tamaño del logo */
-            vertical-align: middle; /* Alinea verticalmente con el texto */
-            margin: 0 20px; /* Espacio entre los logos y el título */
+        50% {
+            transform: rotate(20deg);
         }
-        .header-content {
-            display: flex;
-            align-items: center; /* Centra verticalmente los elementos */
-            justify-content: center; /* Centra horizontalmente los elementos */
+        100% {
+            transform: rotate(0deg);
         }
-        .sub-title {
-            margin-top: 10px; /* Espaciado hacia abajo del título */
-            font-size: 24px; /* Tamaño de fuente para el subtítulo */
-            color: white; /* Color del texto del subtítulo */
+    }
+
+    .header-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sub-title {
+        margin-top: 10px;
+        font-size: 24px;
+        color: white;
+        animation: subTitleAnimation 1.5s ease-in-out;
+    }
+
+    @keyframes subTitleAnimation {
+        0% {
+            transform: translateY(50px);
+            opacity: 0;
         }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .container {
+        width: 80%;
+        margin: 40px auto;
+    }
+
+    h2 {
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        font-size: 36px;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bold;
+        animation: h2Animation 1s ease-in-out;
+    }
+
+    @keyframes h2Animation {
+        0% {
+            transform: scale(0.5);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .tourist-spot {
+        background: white;
+        margin: 30px 0;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        animation: spotAnimation 1s ease-in-out;
+    }
+
+    @keyframes spotAnimation {
+        0% {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .tourist-spot:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .tourist-spot h3 {
+        color: var(--primary-color);
+        margin-bottom: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        font-family: 'Pacifico', cursive;
+    }
+
+    .tourist-spot p {
+        margin-top: 5px;
+        font-size: 16px;
+    }
+
+    .tourist-spot img {
+        max-width: 100%;
+        border-radius: 5px;
+        margin-top: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px 0;
+        background: var(--primary-color);
+        color: white;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        font-size: 14px;
+        animation: footerAnimation 1s ease-in-out;
+    }
+
+    @keyframes footerAnimation {
+        0% {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    /* Estilos responsivos */
+    @media (max-width: 768px) {
         .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
+            width: 90%;
         }
-        h2 {
-            color: #333;
-        }
+
         .tourist-spot {
-            background: white;
-            margin: 20px 0;
             padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            background: #007BFF;
-            color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+    }
+
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 36px;
         }
-    </style>
+
+        .sub-title {
+            font-size: 18px;
+        }
+
+        .logo {
+            width: 40px;
+        }
+
+        .tourist-spot h3 {
+            font-size: 20px;
+        }
+
+        .tourist-spot p {
+            font-size: 14px;
+        }
+    }
+</style>
 </head>
+
 <body>
-    <header>
-        <div class="header-content">
-            <img src="Logo chimalhuacan.jpg" alt="Logo Chimalhuacán" class="logo"> <!-- Logo de Chimalhuacán -->
-            <h1>Chimalhuacán</h1>
-            <img src="Logo conalep.png" alt="Logo Conalep" class="logo"> <!-- Logo de Conalep -->
-        </div>
-        <div class="sub-title">Tlacuilolli Chimalhuacán - Guia Chimalhuacán</div>
-    </header>
-    <div class="container">
-        <h2>Principales Atracciones</h2>
-        <div class="tourist-spot">
-            <h3>Zona arqueológica</h3>
-            <p>Los Pochotes</p>
-        </div>
-        <div class="tourist-spot">
-            <h3>Monumentos</h3>
-            <p>Capilla del santo entierro</p>
-            <p>Guerrero Chimalli</p>
-        </div>
-        <div class="tourist-spot">
-            <h3>Parques</h3>
-            <p>Parque Ecoturistico el chimalhuache</p>
-        </div>
-        <div class="tourist-spot">
-            <h3>Plazas</h3>
-            <p>Plaza Vidrieros</p>
-            <p>Plaza Zaragoza</p>
-        </div>
-        <div class="tourist-spot">
-            <h3>Zona Deportiva</h3>
-            <p>El tepalcate</p>
+<header>
+    <div class="header-content">
+        <img src="Logo chimalhuacan.jpg" alt="Logo Chimalhuacán" class="logo">
+        <h1>Chimalhuacán</h1>
+        <img src="Logo conalep.png" alt="Logo Conalep" class="logo">
+    </div>
+    <div class="sub-title">Tlacuilolli Chimalhuacán - Guía Turística</div>
+    
+    <!-- Menú desplegable circular -->
+    <div class="dropdown">
+        <button class="dropdown-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="dropdown-content">
+            <a href="index.html" class="active">Página Principal</a>
+            <a href="zona-arqueologica.html">Zonas Arqueológicas</a>
+            <a href="monumentos.html">Monumentos</a>
+            <a href="parques.html">Parques</a>
+            <a href="plazas.html">Plazas</a>
+            <a href="zona deportiva.html">Zona Deportiva</a>
+            <a href="museos.html">Museos</a>
         </div>
     </div>
-    <footer>
-        <p>&copy; 2025 Conalep Chimalhuacán</p>
-    </footer>
+</header>
+
+<div class="container">
+    <h2>Principales Atracciones</h2>
+
+    <div class="tourist-spot" onclick="window.location.href='zona-arqueologica.html'">
+        <h3>Zonas Arqueológicas</h3>
+        <p>Los Pochotes</p>
+        <img src="za14.jpg" alt="Zona Arqueológica">
+    </div>
+
+    <div class="tourist-spot" onclick="window.location.href='monumentos.html'">
+        <h3>Monumentos</h3>
+        <p>Capilla del Santo Entierro</p>
+        <p>Guerrero Chimalli</p>
+        <img src="gch1.jpg" alt="Monumentos">
+    </div>
+
+    <div class="tourist-spot" onclick="window.location.href='parques.html'">
+        <h3>Parques</h3>
+        <p>Parque Ecoturístico el Chimalhuache</p>
+        <img src="parque chimal.jpg" alt="Parques">
+    </div>
+
+    <div class="tourist-spot" onclick="window.location.href='plazas.html'">
+        <h3>Plazas</h3>
+        <p>Plaza Vidrieros</p>
+        <p>Plaza Zaragoza</p>
+        <img src="plazas.jpg" alt="Plazas">
+    </div>
+
+    <div class="tourist-spot" onclick="window.location.href='zona deportiva.html'">
+        <h3>Zona Deportiva</h3>
+        <p>El Tepalcate</p>
+        <img src="zona-deportiva.jpg" alt="Zona Deportiva">
+    </div>
+
+    <div class="tourist-spot" onclick="window.location.href='museos.html'">
+        <h3>Museos</h3>
+        <p>Canto del cincel</p>
+        <p>Museo del chimaltonalli</p>
+        <img src="Museo.jpg" alt="Museos">
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Conalep Chimalhuacán</p>
+</footer>
 </body>
 </html>
