@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Museos</title>
+    <title>Zonas Arqueológicas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -205,7 +205,7 @@
       .imagen {
           min-width: 100%;
           height: 300px; /* Altura fija para todas las imágenes */
-          object-fit: 300px; /* Ajustar sin distorsionar */
+          object-fit: cover; /* Ajustar sin distorsionar */
           box-sizing: border-box;
       }
       .nuevo-carrusel {
@@ -224,7 +224,7 @@
       .nuevo-imagen {
           min-width: 100%;
           height: 300px; /* Altura fija para todas las imágenes */
-          object-fit: 350px; /* Ajustar sin distorsionar */
+          object-fit: cover; /* Ajustar sin distorsionar */
           box-sizing: border-box;
       }
       .botones {
@@ -244,7 +244,7 @@
           font-size: 18px;
       }
     </style>
-</head>
+  </head>
 <body>
   <header>
     <div class="dropdown">
@@ -255,203 +255,158 @@
       </button>
       <div class="dropdown-content" role="menu">
         <a href="index.html" role="menuitem">Página Principal</a>
-        <a href="zona-arqueologica.html" role="menuitem">Zonas Arqueológicas</a>
+        <a href="zona-arqueologica.html" class="active" role="menuitem">Zonas Arqueológicas</a>
         <a href="monumentos.html" role="menuitem">Monumentos</a>
         <a href="parques.html" role="menuitem">Parques</a>
         <a href="plazas.html" role="menuitem">Plazas</a>
         <a href="zona deportiva.html" role="menuitem">Zona Deportiva</a>
-        <a href="museos.html" class="active" role="menuitem">Museos</a>
+        <a href="museos.html" role="menuitem">Museos</a>
       </div>
     </div>
-   <h1>Museos</h1>
+    <h1>Zonas Arqueológicas</h1>
   </header>
 
   <div class="carrusel">
-      <div class="imagenes">
-          <img class="imagen" src="cc1.jpg" alt="Imagen 1">
-          <img class="imagen" src="cc2.jpg" alt="Imagen 2">
-          <img class="imagen" src="cc3.jpg" alt="Imagen 3">
-          <img class="imagen" src="cc4.jpg" alt="Imagen 4">
-          <img class="imagen" src="cc5.jpg" alt="Imagen 5">
-          <img class="imagen" src="cc6.jpg" alt="Imagen 6">
-          <img class="imagen" src="cc7.jpg" alt="Imagen 7">
-          <img class="imagen" src="cc8.jpg" alt="Imagen 8">
-          <img class="imagen" src="cc9.jpg" alt="Imagen 9">
-          <img class="imagen" src="cc10.jpg" alt="Imagen 10">
+        <div class="imagenes">
+            <img class="imagen" src="za1.jpeg" alt="Imagen 1">
+            <img class="imagen" src="za2.jpeg" alt="Imagen 2">
+            <img class="imagen" src="za3.jpeg" alt="Imagen 3">
+            <img class="imagen" src="za4.jpeg" alt="Imagen 4">
+            <img class="imagen" src="za5.jpeg" alt="Imagen 5">
+            <img class="imagen" src="za6.jpeg" alt="Imagen 6">
+            <img class="imagen" src="za7.jpeg" alt="Imagen 7">
+            <img class="imagen" src="za8.jpeg" alt="Imagen 8">
+            <img class="imagen" src="za9.jpeg" alt="Imagen 9">
+            <img class="imagen" src="za10.jpeg" alt="Imagen 10">
+            <img class="imagen" src="za11.jpg" alt="Imagen 11">
+            <img class="imagen" src="za12.jpg" alt="Imagen 12">
+            <img class="imagen" src="za13.jpg" alt="Imagen 13">
+            <img class="imagen" src="za14.jpg" alt="Imagen 14">
+        </div>
+        <div class="botones">
+            <button class="boton" id="prev">❮</button>
+            <button class="boton" id="next">❯</button>
+        </div>
+    </div>
+
+  <section class="content">
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon">
+        <h2>🌳 Los Pochotes</h2>
       </div>
-      <div class="botones">
-          <button class="boton" id="prev">❮</button>
-          <button class="boton" id="next">❯</button>
+      <img src="za1.jpeg" alt="Los Pochotes" />
+      <p>La zona arqueológica Los Pochotes, ubicada en el Barrio de San Andrés en Chimalhuacán, Estado de México, es un sitio de gran relevancia histórica y cultural que resguarda vestigios de distintas épocas de ocupación humana en la región.</p>
+    </article>
+
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon"> 
+        <h2>🏛️ Estructuras y Hallazgos</h2>
       </div>
-  </div>
+      <img src="za2.jpeg" alt="Estructuras" />
+      <p>En Los Pochotes se encuentran restos de un palacio prehispánico conocido como el Técpan de Chimalhuacán, considerado uno de los mejor conservados del Altiplano Central. Su arquitectura muestra influencias de las culturas teotihuacana, tolteca y acolhua.</p>
+    </article>
+
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon">
+        <h2>🧬 Importancia Arqueológica</h2>
+      </div>
+      <img src="za3.jpeg" alt="Centro urbano" />
+      <p>En 1984 se descubrió el esqueleto del "Hombre de Chimalhuacán", con una antigüedad estimada de 12,000 años, lo que convierte a esta zona en una de las cunas del hombre mesoamericano. También se han encontrado restos de fauna del Pleistoceno, como colmillos de mamut y huesos de bisonte, los cuales son exhibidos en el museo.</p>
+    </article>
+
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon">
+        <h2>📜 Historia de Los Pochotes</h2>
+      </div>
+      <img src="za4.jpeg" alt="Historia de Los Pochotes" />
+      <p>Los Pochotes fue un centro urbano importante durante el periodo Clásico y Posclásico. La zona ha proporcionado información valiosa sobre la vida cotidiana, religión y organización social de sus habitantes. Se han encontrado numerosos artefactos, incluyendo cerámica, herramientas de piedra y objetos decorativos, que reflejan la rica cultura de la región.</p>
+    </article>
+
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon">
+        <h2>🌿 Flora y Fauna</h2>
+      </div>
+      <img src="za7.jpeg" alt="Flora y Fauna" />
+      <p>La zona arqueológica de Los Pochotes no solo es rica en historia, sino también en biodiversidad. La región alberga diversas especies de flora y fauna, muchas de las cuales son endémicas. Entre las plantas destacan los nopales y magueyes, mientras que la fauna incluye aves como el cenzontle y mamíferos pequeños.</p>
+    </article>
+
+    <article class="article" tabindex="0">
+      <div class="heading-with-icon">
+        <h2>👨‍⚕️ Trabajo Arqueológico</h2>
+      </div>
+      <img src="za5.jpeg" alt="Trabajo Arqueológico" />
+      <p>Con el trabajo arqueológico realizado durante las décadas de los 40's y 90's del siglo pasado se han reconocido tres momentos de ocupación: Preclásico (400-100 a. C.), Clásico (200-450 d. C.) y Posclásico (800-1000 d. C. y 1100-1521 d. C.).</p>
+    </article>
+  </section>
+
+  <section id="address-section" aria-label="Dirección de Los Pochotes">
+    📍 Dirección: Pochotes s/n, San Pedro, 56334 Chimalhuacán, Méx.
+  </section>
+
+  <section aria-label="Mapa de ubicación de Los Pochotes">
+    <h2>📍 Ubicación de Los Pochotes</h2>
+    <div id="map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3730.648534648884!2d-98.94990968503879!3d19.41810475336792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1e3bff1885c2b%3A0x6c05f02692443226!2sZona%20Arqueol%C3%B3gica%20de%20Chimalhuac%C3%A1n!5e0!3m2!1ses!2smx!4v1686490037925!5m2!1ses!2smx"
+        width="100%"
+        height="400"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
+    </div>
+  </section>
+
+  <section id="address-section" aria-label="Dirección de Los Pochotes">
+     Conferencia realizada en el plantel conalep chimalhuacán sobre la zona arqueológica de Los Pochotes.
+  </section>
 
   <section class="content">
 <div class="article">
-<h2>🏺 Museo Canto del Cincel</h2>
-<img src="cc1.jpg" alt="Museo Canto del Cincel">
-<p>El Museo Canto del Cincel es un espacio dedicado a la preservación y promoción de la cultura local. A través de exposiciones y talleres, el museo busca acercar a la comunidad a su patrimonio cultural y artístico.</p>
+<h2>🏛️ Información importante sobre la Zona Arqueológica de Los Pochotes</h2>
+<img src="conferencia pochotes9.jpg" alt="Zona Arqueológica de Los Pochotes">
+<p>Los Pochotes es un importante sitio arqueológico ubicado en el municipio de Chimalhuacán, Estado de México, en la zona metropolitana de la Ciudad de México.</p>
 </div>
 
 <div class="article">
-<h2>📍 Ubicación</h2>
-<img src="cc2.jpg" alt="Ubicación Museo Canto del Cincel">
-<p>Situado en el centro de Chimalhuacán, el museo es fácilmente accesible y está rodeado de otras atracciones culturales y recreativas.</p>
+<h2>📍 Edificio</h2>
+<img src="conferencia pochotes8.jpg" alt="Ubicación Plaza Zaragoza">
+<p>El sitio presenta restos significativos de arquitectura del Posclásico Tardío (1200-1521 d.C.), incluyendo un tecpan (palacio), una estructura poco común en el Valle de México.  Sin embargo, la evidencia sugiere una ocupación del área desde el Preclásico.</p>
 </div>
 
 <div class="article">
-<h2>🎨 Exposiciones y Actividades</h2>
-<img src="cc5.jpg" alt="Exposiciones en Museo Canto del Cincel">
-<p>El museo alberga diversas exposiciones temporales y permanentes que destacan el arte y la tradición de la región, así como talleres para niños y adultos.</p>
+<h2>🎉 Descubrimientos</h2>
+<img src="conferencia pochotes6.jpg" alt="Eventos en Plaza Zaragoza">
+<p>Los Pochotes es considerado un posible lugar de origen de la civilización mesoamericana debido al descubrimiento del "Hombre de Chimalhuacán", cuyos restos datan de aproximadamente 12,000 años.  Otros hallazgos importantes incluyen un colmillo de mamut y diversos artefactos como esculturas y molcajetes</p>
 </div>
-<div class="article">
-  <h2>🕒 Horarios</h2>
-  <img src="cc3.jpg" alt="Horarios Museo Canto del Cincel">
-  <p>El museo abre sus puertas de martes a domingo, de 10:00 a 18:00 horas. Los lunes permanece cerrado al público.</p>
-</div>
-
-<div class="article">
-  <h2>🎟️ Entradas</h2>
-  <img src="cc4.jpg" alt="Entradas Museo Canto del Cincel">
-  <p>La entrada al museo es gratuita, lo que permite a todos disfrutar de las exposiciones y actividades sin costo alguno.</p>
-</div>
-
-<div class="article">
-  <h2>👥 Visitas Guiadas</h2>
-  <img src="cc6.jpg" alt="Visitas Guiadas Museo Canto del Cincel">
-  <p>Se ofrecen visitas guiadas para grupos escolares y turistas, con el fin de proporcionar una mejor comprensión de las exposiciones y la historia local. Se recomienda reservar con anticipación.</p>
-</div>
-
-<div class="article">
-  <h2>🛍️ Tienda de Souvenirs</h2>
-  <img src="cc7.jpg" alt="Tienda de Souvenirs Museo Canto del Cincel">
-  <p>El museo cuenta con una tienda de souvenirs donde los visitantes pueden adquirir artesanías locales, libros y otros recuerdos relacionados con la cultura de Chimalhuacán.</p>
-</div>
-
-<div class="article">
-  <h2>🌱 Proyectos Comunitarios</h2>
-  <img src="cc8.jpg" alt="Proyectos Comunitarios Museo Canto del Cincel">
-  <p>El museo participa en proyectos comunitarios que buscan fomentar el desarrollo cultural y social de la región, involucrando a la población en actividades artísticas y educativas.</p>
-</div>
-
-<div class="article">
-  <h2>🌍 Accesibilidad</h2>
-  <img src="cc9.jpg" alt="Accesibilidad Museo Canto del Cincel">
-  <p>El Museo Canto del Cincel es accesible para personas con discapacidad, con rampas y servicios adaptados para garantizar que todos puedan disfrutar de su visita.</p>
-</div>
-
 </section>
 
-  <section id="address-section" aria-label="Dirección de Los Pochotes">
-    📍 Dirección: 56353, Av de las Torres LT3, Saraperos, Chimalhuacán, Méx.
-  </section>
-
-<section aria-label="Mapa de ubicación de el Museo Canto del Cincel">
-  <h2>📍 Ubicación de el Museo Canto del Cincel</h2>
-  <div id="map">
-    <iframe 
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3759.6978433425!2d-98.9864907!3d19.4184962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1e36cbdafc151%3A0xb9994ba59b52d258!2sMuseo%20%22Canto%20del%20Cincel%22!5e0!3m2!1ses-419!2smx!4v1685064675550!5m2!1ses-419!2smx" 
-    width="100%" 
-    height="400" 
-    style="border:0;" 
-    allowfullscreen="" 
-    loading="lazy">
-</iframe>
-  </div>
-</section>
-
-<div class="nuevo-carrusel">
+ <div class="nuevo-carrusel">
       <div class="nuevo-imagenes">
-          <img class="nuevo-imagen" src="mc1.jpg" alt="Imagen 1">
-          <img class="nuevo-imagen" src="mc2.jpg" alt="Imagen 2">
-          <img class="nuevo-imagen" src="mc3.jpg" alt="Imagen 3">
-          <img class="nuevo-imagen" src="mc4.jpg" alt="Imagen 4">
-          <img class="nuevo-imagen" src="mc5.jpg" alt="Imagen 5">
-          <img class="nuevo-imagen" src="mc6.jpg" alt="Imagen 6">
-          <img class="nuevo-imagen" src="mc7.jpg" alt="Imagen 7">
-          <img class="nuevo-imagen" src="mc8.jpg" alt="Imagen 8">
-          <img class="nuevo-imagen" src="mc9.jpg" alt="Imagen 9">
-          <img class="nuevo-imagen" src="mc10.jpg" alt="Imagen 10">
-          <img class="nuevo-imagen" src="mc11.jpg" alt="Imagen 11">
-          <img class="nuevo-imagen" src="mc12.jpg" alt="Imagen 12">
-          <img class="nuevo-imagen" src="mc13.jpg" alt="Imagen 13">
-          <img class="nuevo-imagen" src="mc14.jpg" alt="Imagen 14">
-          <img class="nuevo-imagen" src="mc15.jpg" alt="Imagen 15">
-          <img class="nuevo-imagen" src="mc16.jpg" alt="Imagen 16">
-          <img class="nuevo-imagen" src="mc17.jpg" alt="Imagen 17">
-          <img class="nuevo-imagen" src="mc18.jpg" alt="Imagen 18">
-          <img class="nuevo-imagen" src="mc19.jpg" alt="Imagen 19">
-          <img class="nuevo-imagen" src="mc20.jpg" alt="Imagen 20">
-          <img class="nuevo-imagen" src="mc21.jpg" alt="Imagen 21">
-          <img class="nuevo-imagen" src="mc22.jpg" alt="Imagen 22">
-          <img class="nuevo-imagen" src="mc23.jpg" alt="Imagen 23">
-          <img class="nuevo-imagen" src="mc24.jpg" alt="Imagen 24">
-          <img class="nuevo-imagen" src="mc25.jpg" alt="Imagen 25">
-          <img class="nuevo-imagen" src="mc26.jpg" alt="Imagen 26">
-          <img class="nuevo-imagen" src="mc27.jpg" alt="Imagen 27">
-          <img class="nuevo-imagen" src="mc28.jpg" alt="Imagen 28">
+          <img class="nuevo-imagen" src="conferencia pochotes1.jpg" alt="Imagen 1">
+          <img class="nuevo-imagen" src="conferencia pochotes2.jpg" alt="Imagen 2">
+          <img class="nuevo-imagen" src="conferencia pochotes3.jpg" alt="Imagen 3">
+          <img class="nuevo-imagen" src="conferencia pochotes4.jpg" alt="Imagen 4">
+          <img class="nuevo-imagen" src="conferencia pochotes5.jpg" alt="Imagen 5">
+          <img class="nuevo-imagen" src="conferencia pochotes6.jpg" alt="Imagen 6">
+          <img class="nuevo-imagen" src="conferencia pochotes7.jpg" alt="Imagen 7">
+          <img class="nuevo-imagen" src="conferencia pochotes8.jpg" alt="Imagen 8">
+          <img class="nuevo-imagen" src="conferencia pochotes9.jpg" alt="Imagen 9">
+          <img class="nuevo-imagen" src="conferencia pochotes10.jpg" alt="Imagen 10">
+          <img class="nuevo-imagen" src="conferencia pochotes11.jpg" alt="imagen 11">
+          <img class="nuevo-imagen" src="conferencia pochotes12.jpg" alt="Imagen 12">
+          <img class="nuevo-imagen" src="conferencia pochotes13.jpg" alt="Imagen 13">
+          <img class="nuevo-imagen" src="conferencia pochotes14.jpg" alt="Imagen 14">
+          <img class="nuevo-imagen" src="conferencia pochotes15.jpg" alt="Imagen 15">
+          <img class="nuevo-imagen" src="conferencia pochotes16.jpg" alt="Imagen 16">
+          <img class="nuevo-imagen" src="conferencia pochotes17.jpg" alt="Imagen 17">
+          <img class="nuevo-imagen" src="conferencia pochotes18.jpg" alt="Imagen 18">
       </div>
       <div class="botones">
           <button class="boton" id="prev-nuevo">❮</button>
           <button class="boton" id="next-nuevo">❯</button>
       </div>
   </div>
-
-  <section class="content">
-<div class="article">
-<h2>🏛️ Museo del Chimaltonalli</h2>
-<img src="mc28.jpg" alt="Museo del Chimaltonalli">
-<p>El Museo del Chimaltonalli es un espacio que celebra la historia y cultura de Chimalhuacán. Ofrece una mirada profunda a las tradiciones, costumbres y la evolución de la comunidad a lo largo de los años.</p>
-</div>
-
-<div class="article">
-<h2>📍 Ubicación</h2>
-<img src="mc27.jpg" alt="Ubicación Museo del Chimaltonalli">
-<p>Ubicado en una zona estratégica, el museo es de fácil acceso para los visitantes y está cerca de otros puntos de interés en Chimalhuacán.</p>
-</div>
-
-<div class="article">
-<h2>🎉 Eventos y Programas</h2>
-<img src="mc26.jpg" alt="Eventos en Museo del Chimaltonalli">
-<p>El museo organiza eventos culturales, charlas y actividades educativas que fomentan el interés por la historia y la cultura local, creando un espacio de aprendizaje y convivencia.</p>
-</div>
-
-<div class="article">
-<h2>🏫 Edificios Históricos</h2><!1>
-<img src="" alt="Edificios Históricos Plaza Zaragoza">
-<p>La Plaza Zaragoza está rodeada de edificios históricos y arquitectura tradicional, lo que le confiere un carácter patrimonial y cultural único. Estos elementos contribuyen a la identidad y el valor histórico del lugar.</p>
-</div>
-
-<div class="article">
-<h2>🌳 Áreas Verdes y Recreativas</h2><!1>
-<img src="" alt="Áreas Verdes Plaza Zaragoza">
-<p>La plaza cuenta con amplias áreas verdes y espacios recreativos, como jardines, fuentes y plazoletas, que ofrecen a los visitantes un entorno agradable y relajante para disfrutar.</p>
-</div>
-
-<div class="article">
-<h2>🚲 Movilidad Sostenible</h2><!1>
-<img src="" alt="Movilidad Sostenible Plaza Zaragoza">
-<p>La Plaza Zaragoza promueve la movilidad sostenible, con espacios designados para el tránsito peatonal y la circulación de bicicletas, fomentando un entorno amigable con el medio ambiente.</p>
-</div>
-</section>
-
-<section id="address-section" aria-label="Dirección de la Plaza Zaragoza">
-    📍 Dirección: 
-  </section>
-
-  <section aria-label="Mapa de ubicación de el Museo el Chimaltonalli">
-  <h2>📍 Ubicación de el Museo el Chimaltonalli</h2>
-  <div id="map">
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3761.5229898706!2d-98.94718268508593!3d19.416547487038947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1e3c05eea39d5%3A0x272be08b66660ed9!2sPlaza%20Zaragoza!5e0!3m2!1ses!2smx!4v1686002688524!5m2!1ses!2smx"
-      width="100%"
-      height="400"
-      style="border:0;"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-    ></iframe>
-  </div>
-</section>
 
   <footer>© 2025 Tlacuilolli Chimalhuacán. Todos los derechos reservados.</footer>
   
@@ -509,4 +464,4 @@
         }, 4000); // 4000 ms = 4 segundos
   </script>
 </body>
-</html>  
+</html>

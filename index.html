@@ -158,8 +158,11 @@
     }
 
     .container {
-        width: 80%;
-        margin: 40px auto;
+        width: 100%; /* Ancho completo para la contenedor */
+        margin: 20px 0; /* Espacio vertical entre secciones */
+        display: flex;
+        flex-direction: column; /* Coloca los apartados en columna */
+        align-items: center; /* Centra los apartados horizontalmente */
     }
 
     h2 {
@@ -170,6 +173,7 @@
         text-transform: uppercase;
         font-weight: bold;
         animation: h2Animation 1s ease-in-out;
+        width: 100%; /* Asegura que el título ocupe todo el ancho */
     }
 
     @keyframes h2Animation {
@@ -185,13 +189,15 @@
 
     .tourist-spot {
         background: white;
-        margin: 30px 0;
-        padding: 20px;
+        margin: 10px 0; /* Espaciado vertical entre apartados */
+        padding: 15px; /* Ajustado para un mejor espaciado */
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         cursor: pointer;
         transition: transform 0.3s ease;
         animation: spotAnimation 1s ease-in-out;
+        width: 100%; /* Cada apartado ocupa el 100% del ancho */
+        max-width: 550px; /* Ancho máximo para cada apartado */
     }
 
     @keyframes spotAnimation {
@@ -224,9 +230,12 @@
     }
 
     .tourist-spot img {
-        max-width: 100%;
+        width: 100%; /* Todas las imágenes ocuparán el 100% del ancho del contenedor */
+        height: 300px; /* Aumentar la altura para hacerlas más grandes */
+        object-fit: contain; /* Mantiene la proporción y evita recortes */
         border-radius: 5px;
-        margin-top: 10px;
+        margin: 10px auto; /* Centra la imagen horizontalmente */
+        display: block; /* Hace que la imagen se comporte como un bloque */
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
@@ -256,11 +265,11 @@
     /* Estilos responsivos */
     @media (max-width: 768px) {
         .container {
-            width: 90%;
+            width: 100%; /* Mantener el ancho completo en pantallas más pequeñas */
         }
 
         .tourist-spot {
-            padding: 15px;
+            width: 100%; /* Un apartado por fila en pantallas más pequeñas */
         }
     }
 
@@ -275,6 +284,10 @@
 
         .logo {
             width: 40px;
+        }
+
+        .tourist-spot {
+            width: 100%; /* Un apartado por fila en pantallas pequeñas */
         }
 
         .tourist-spot h3 {
@@ -342,20 +355,20 @@
         <h3>Plazas</h3>
         <p>Plaza Vidrieros</p>
         <p>Plaza Zaragoza</p>
-        <img src="plazas.jpg" alt="Plazas">
+        <img src="plaza zaragoza.png" alt="Plazas">
     </div>
 
     <div class="tourist-spot" onclick="window.location.href='zona deportiva.html'">
         <h3>Zona Deportiva</h3>
         <p>El Tepalcate</p>
-        <img src="zona-deportiva.jpg" alt="Zona Deportiva">
+        <img src="Tepalcates.jpg" alt="Zona Deportiva">
     </div>
 
     <div class="tourist-spot" onclick="window.location.href='museos.html'">
         <h3>Museos</h3>
         <p>Canto del cincel</p>
         <p>Museo del chimaltonalli</p>
-        <img src="Museo.jpg" alt="Museos">
+        <img src="museo chimaltonalli.jpg" alt="Museos">
     </div>
 </div>
 
