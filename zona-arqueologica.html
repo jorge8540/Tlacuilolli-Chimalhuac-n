@@ -90,6 +90,7 @@
         color: white;
         padding: 20px 0;
         text-align: center;
+        width: 100%; /* Asegura que el header ocupe todo el ancho */
       }
 
       h1 {
@@ -98,6 +99,7 @@
         color: white;
         text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
         margin: 0;
+        width: 100%; /* Asegura que el título ocupe todo el ancho */
       }
 
       .content {
@@ -131,7 +133,7 @@
 
       .article img {
         width: 90%;
-        max-height: 120px;
+        max-height: 300px;
         object-fit: cover;
         margin: 0.5rem 0 1rem;
         border-radius: 5px;
@@ -161,6 +163,8 @@
         text-align: center;
         padding: 1rem;
         font-size: 0.9rem;
+        width: 100%; /* Asegura que el footer ocupe todo el ancho */
+        position: relative; /* Para evitar problemas de superposición */
       }
 
       #map {
@@ -200,7 +204,26 @@
       }
       .imagen {
           min-width: 100%;
-          height: 300px; /* Mantener proporción */
+          height: 300px; /* Altura fija para todas las imágenes */
+          object-fit: cover; /* Ajustar sin distorsionar */
+          box-sizing: border-box;
+      }
+      .nuevo-carrusel {
+          position: relative;
+          max-width: 400px; /* Tamaño ajustado a 400px */
+          margin: 20px auto; /* Centrado */
+          overflow: hidden;
+          border: 2px solid #ccc;
+          border-radius: 10px;
+      }
+      .nuevo-imagenes {
+          display: flex;
+          transition: transform 0.5s ease;
+          width: 100%; /* Ajustar al 100% */
+      }
+      .nuevo-imagen {
+          min-width: 100%;
+          height: 300px; /* Altura fija para todas las imágenes */
           object-fit: cover; /* Ajustar sin distorsionar */
           box-sizing: border-box;
       }
@@ -333,11 +356,64 @@
       ></iframe>
     </div>
   </section>
+
+  <section id="address-section" aria-label="Dirección de Los Pochotes">
+     Conferencia realizada en el plantel conalep chimalhuacán sobre la zona arqueológica de Los Pochotes.
+  </section>
+
+  <section class="content">
+<div class="article">
+<h2>🏛️ Información importante sobre la Zona Arqueológica de Los Pochotes</h2>
+<img src="conferencia pochotes9.jpg" alt="Zona Arqueológica de Los Pochotes">
+<p>Los Pochotes es un importante sitio arqueológico ubicado en el municipio de Chimalhuacán, Estado de México, en la zona metropolitana de la Ciudad de México.</p>
+</div>
+
+<div class="article">
+<h2>📍 Edificio</h2>
+<img src="conferencia pochotes8.jpg" alt="Ubicación Plaza Zaragoza">
+<p>El sitio presenta restos significativos de arquitectura del Posclásico Tardío (1200-1521 d.C.), incluyendo un tecpan (palacio), una estructura poco común en el Valle de México.  Sin embargo, la evidencia sugiere una ocupación del área desde el Preclásico.</p>
+</div>
+
+<div class="article">
+<h2>🎉 Descubrimientos</h2>
+<img src="conferencia pochotes6.jpg" alt="Eventos en Plaza Zaragoza">
+<p>Los Pochotes es considerado un posible lugar de origen de la civilización mesoamericana debido al descubrimiento del "Hombre de Chimalhuacán", cuyos restos datan de aproximadamente 12,000 años.  Otros hallazgos importantes incluyen un colmillo de mamut y diversos artefactos como esculturas y molcajetes</p>
+</div>
+</section>
+
+ <div class="nuevo-carrusel">
+      <div class="nuevo-imagenes">
+          <img class="nuevo-imagen" src="" alt="Imagen 1">
+          <img class="nuevo-imagen" src="" alt="Imagen 2">
+          <img class="nuevo-imagen" src="" alt="Imagen 3">
+          <img class="nuevo-imagen" src="" alt="Imagen 4">
+          <img class="nuevo-imagen" src="" alt="Imagen 5">
+          <img class="nuevo-imagen" src="" alt="Imagen 6">
+          <img class="nuevo-imagen" src="" alt="Imagen 7">
+          <img class="nuevo-imagen" src="" alt="Imagen 8">
+          <img class="nuevo-imagen" src="" alt="Imagen 9">
+          <img class="nuevo-imagen" src="" alt="Imagen 10">
+          <img class="nuevo-imagen" src="" alt="imagen 11">
+          <img class="nuevo-imagen" src="" alt="Imagen 12">
+          <img class="nuevo-imagen" src="" alt="Imagen 13">
+          <img class="nuevo-imagen" src="" alt="Imagen 14">
+          <img class="nuevo-imagen" src="" alt="Imagen 15">
+          <img class="nuevo-imagen" src="" alt="Imagen 16">
+          <img class="nuevo-imagen" src="" alt="Imagen 17">
+          <img class="nuevo-imagen" src="" alt="Imagen 18">
+      </div>
+      <div class="botones">
+          <button class="boton" id="prev-nuevo">❮</button>
+          <button class="boton" id="next-nuevo">❯</button>
+      </div>
+  </div>
+
   <footer>© 2025 Tlacuilolli Chimalhuacán. Todos los derechos reservados.</footer>
   
   <script>
+        // Carrusel original
         let index = 0;
-        const images = document.querySelectorAll('.imagen');
+        const images = document.querySelectorAll('.imagenes .imagen');
         const totalImages = images.length;
 
         document.getElementById('next').addEventListener('click', () => {
@@ -359,6 +435,32 @@
         setInterval(() => {
             index = (index + 1) % totalImages;
             updateCarousel();
+        }, 4000); // 4000 ms = 4 segundos
+        
+         // Nuevo carrusel
+        let nuevoIndex = 0;
+        const nuevoImages = document.querySelectorAll('.nuevo-imagenes .nuevo-imagen');
+        const totalNuevoImages = nuevoImages.length;
+
+        document.getElementById('next-nuevo').addEventListener('click', () => {
+            nuevoIndex = (nuevoIndex + 1) % totalNuevoImages;
+            updateNuevoCarousel();
+        });
+
+        document.getElementById('prev-nuevo').addEventListener('click', () => {
+            nuevoIndex = (nuevoIndex - 1 + totalNuevoImages) % totalNuevoImages;
+            updateNuevoCarousel();
+        });
+
+        function updateNuevoCarousel() {
+            const offset = -nuevoIndex * 100;
+            document.querySelector('.nuevo-imagenes').style.transform = `translateX(${offset}%)`;
+        }
+
+        // Cambiar imagen del nuevo carrusel cada 4 segundos
+        setInterval(() => {
+            nuevoIndex = (nuevoIndex + 1) % totalNuevoImages;
+            updateNuevoCarousel();
         }, 4000); // 4000 ms = 4 segundos
   </script>
 </body>

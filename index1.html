@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Museos</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap"
-      rel="stylesheet" />
-    <style>
-      .dropdown {
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chimalhuacán - Guía Turística</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+    /* Estilos del menú desplegable */
+    .dropdown {
         position: absolute;
         top: 20px;
         left: 20px;
         display: inline-block;
-      }
+    }
 
-      .dropdown-btn {
-        background-color: #ffc107;
+    .dropdown-btn {
+        background-color: #FFC107; /* Color amarillo */
         color: white;
         width: 50px;
         height: 50px;
@@ -30,483 +29,351 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-      }
+    }
 
-      .dropdown-btn span {
+    .dropdown-btn span {
         width: 25px;
         height: 3px;
         background-color: white;
         margin: 3px 0;
-      }
+    }
 
-      .dropdown-content {
+    .dropdown-content {
         display: none;
         position: absolute;
         background-color: #f1f1f1;
         min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
         border-radius: 10px;
         padding: 10px 0;
-      }
+    }
 
-      .dropdown-content a {
+    .dropdown-content a {
         color: var(--text-color);
         padding: 12px 16px;
         text-decoration: none;
         display: block;
-      }
+    }
 
-      .dropdown-content a.active {
+    .dropdown-content a.active {
         color: var(--primary-color);
         font-weight: bold;
-      }
+    }
 
-      .dropdown-content a:hover {
+    .dropdown-content a:hover {
         background-color: #ddd;
-      }
+    }
 
-      .dropdown:hover .dropdown-content {
+    .dropdown:hover .dropdown-content {
         display: block;
-      }
+    }
 
-      :root {
-        --primary-color: #007bff;
-        --secondary-color: #ffc107;
-        --background-color: #f5f5f5;
+    /* Resto de estilos */
+    :root {
+        --primary-color: #007BFF;
+        --secondary-color: #FFC107;
+        --background-color: #F5F5F5;
         --text-color: #333333;
-      }
+    }
 
-      body {
-        font-family: "Montserrat", Arial, sans-serif;
+    body {
+        font-family: 'Montserrat', Arial, sans-serif;
         margin: 0;
         padding: 0;
         background-color: var(--background-color);
         color: var(--text-color);
-      }
+    }
 
-      header {
+    header {
         background: var(--primary-color);
         color: white;
         padding: 20px 0;
         text-align: center;
-        width: 100%; /* Asegura que el header ocupe todo el ancho */
-      }
+        position: relative;
+        animation: headerAnimation 1s ease-in-out;
+    }
 
-      h1 {
-        font-family: "Pacifico", cursive;
+    @keyframes headerAnimation {
+        0% {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    h1 {
+        font-family: 'Pacifico', cursive;
         font-size: 48px;
         color: white;
         text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-        margin: 0;
-        width: 100%; /* Asegura que el título ocupe todo el ancho */
-      }
+        display: inline-block;
+        margin: 0 20px;
+    }
 
-      .content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1rem;
-        padding: 2rem;
-      }
-
-      .article {
-        background-color: white;
-        padding: 1rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .article:hover {
-        transform: scale(1.02);
-      }
-
-      .article h2 {
-        color: var(--primary-color);
-        font-size: 1.5rem;
-        margin-top: 0;
-      }
-
-      .article img {
-        width: 90%;
-        max-height: 300px;
-        object-fit: cover;
-        margin: 0.5rem 0 1rem;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-
-      .inline-img {
-        width: 40px;
-        height: 40px;
-        object-fit: contain;
+    .logo {
+        width: 60px;
         vertical-align: middle;
-        margin-right: 8px;
-        filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.15));
-      }
+        margin: 0 20px;
+        animation: logoAnimation 2s infinite ease-in-out;
+    }
 
-      .heading-with-icon {
+    @keyframes logoAnimation {
+        0% {
+            transform: rotate(0deg);
+        }
+        50% {
+            transform: rotate(20deg);
+        }
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+
+    .header-content {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
-        margin-bottom: 0.5rem;
-      }
+    }
 
-      footer {
-        background-color: var(--primary-color);
+    .sub-title {
+        margin-top: 10px;
+        font-size: 24px;
         color: white;
-        text-align: center;
-        padding: 1rem;
-        font-size: 0.9rem;
-        width: 100%; /* Asegura que el footer ocupe todo el ancho */
-        position: relative; /* Para evitar problemas de superposición */
-      }
+        animation: subTitleAnimation 1.5s ease-in-out;
+    }
 
-      #map {
-        width: 100%;
-        height: 400px;
+    @keyframes subTitleAnimation {
+        0% {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .container {
+        width: 100%; /* Ancho completo para la contenedor */
+        margin: 20px 0; /* Espacio vertical entre secciones */
+        display: flex;
+        flex-direction: column; /* Coloca los apartados en columna */
+        align-items: center; /* Centra los apartados horizontalmente */
+    }
+
+    h2 {
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        font-size: 36px;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bold;
+        animation: h2Animation 1s ease-in-out;
+        width: 100%; /* Asegura que el título ocupe todo el ancho */
+    }
+
+    @keyframes h2Animation {
+        0% {
+            transform: scale(0.5);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .tourist-spot {
+        background: white;
+        margin: 10px 0; /* Espaciado vertical entre apartados */
+        padding: 15px; /* Ajustado para un mejor espaciado */
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        margin: 2rem 0;
-      }
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        animation: spotAnimation 1s ease-in-out;
+        width: 100%; /* Cada apartado ocupa el 100% del ancho */
+        max-width: 750px; /* Ancho máximo para cada apartado */
+    }
 
-      #address-section {
-        background-color: white;
-        max-width: 700px;
-        margin: 2rem auto;
-        padding: 1.5rem 2rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        font-size: 1.2rem;
+    @keyframes spotAnimation {
+        0% {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .tourist-spot:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .tourist-spot h3 {
         color: var(--primary-color);
+        margin-bottom: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        font-family: 'Pacifico', cursive;
+    }
+
+    .tourist-spot p {
+        margin-top: 5px;
+        font-size: 16px;
+    }
+
+    .tourist-spot img {
+        width: 95%; /* Todas las imágenes ocuparán el 95% del ancho del contenedor */
+        height: 750px; /* Altura fija para todas las imágenes */
+        object-fit: cover; /* Mantiene la proporción y recorta si es necesario */
+        border-radius: 5px;
+        margin: 10px auto; /* Centra la imagen horizontalmente */
+        display: block; /* Hace que la imagen se comporte como un bloque */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
         text-align: center;
-        font-weight: 600;
-        letter-spacing: 0.05em;
-      }
+        padding: 20px 0;
+        background: var(--primary-color);
+        color: white;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        font-size: 14px;
+        animation: footerAnimation 1s ease-in-out;
+    }
 
-      .carrusel {
-          position: relative;
-          max-width: 400px; /* Tamaño ajustado a 400px */
-          margin: 20px auto; /* Centrado */
-          overflow: hidden;
-          border: 2px solid #ccc;
-          border-radius: 10px;
-      }
-      .imagenes {
-          display: flex;
-          transition: transform 0.5s ease;
-          width: 100%; /* Ajustar al 100% */
-      }
-      .imagen {
-          min-width: 100%;
-          height: 300px; /* Altura fija para todas las imágenes */
-          object-fit: 300px; /* Ajustar sin distorsionar */
-          box-sizing: border-box;
-      }
-      .nuevo-carrusel {
-          position: relative;
-          max-width: 400px; /* Tamaño ajustado a 400px */
-          margin: 20px auto; /* Centrado */
-          overflow: hidden;
-          border: 2px solid #ccc;
-          border-radius: 10px;
-      }
-      .nuevo-imagenes {
-          display: flex;
-          transition: transform 0.5s ease;
-          width: 100%; /* Ajustar al 100% */
-      }
-      .nuevo-imagen {
-          min-width: 100%;
-          height: 300px; /* Altura fija para todas las imágenes */
-          object-fit: 350px; /* Ajustar sin distorsionar */
-          box-sizing: border-box;
-      }
-      .botones {
-          position: absolute;
-          top: 50%;
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-          transform: translateY(-50%);
-      }
-      .boton {
-          background-color: rgba(255, 255, 255, 0.8);
-          border: none;
-          padding: 10px;
-          cursor: pointer;
-          border-radius: 5px;
-          font-size: 18px;
-      }
-    </style>
+    @keyframes footerAnimation {
+        0% {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    /* Estilos responsivos */
+    @media (max-width: 768px) {
+        .container {
+            width: 100%; /* Mantener el ancho completo en pantallas más pequeñas */
+        }
+
+        .tourist-spot {
+            width: 100%; /* Un apartado por fila en pantallas más pequeñas */
+        }
+    }
+
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 36px;
+        }
+
+        .sub-title {
+            font-size: 18px;
+        }
+
+        .logo {
+            width: 40px;
+        }
+
+        .tourist-spot {
+            width: 100%; /* Un apartado por fila en pantallas pequeñas */
+        }
+
+        .tourist-spot h3 {
+            font-size: 20px;
+        }
+
+        .tourist-spot p {
+            font-size: 14px;
+        }
+    }
+</style>
 </head>
+
 <body>
-  <header>
-    <div class="dropdown">
-      <button class="dropdown-btn" aria-label="Menú principal">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <div class="dropdown-content" role="menu">
-        <a href="index.html" role="menuitem">Página Principal</a>
-        <a href="zona-arqueologica.html" role="menuitem">Zonas Arqueológicas</a>
-        <a href="monumentos.html" role="menuitem">Monumentos</a>
-        <a href="parques.html" role="menuitem">Parques</a>
-        <a href="plazas.html" role="menuitem">Plazas</a>
-        <a href="zona deportiva.html" role="menuitem">Zona Deportiva</a>
-        <a href="museos.html" class="active" role="menuitem">Museos</a>
-      </div>
+<header>
+    <div class="header-content">
+        <img src="Logo chimalhuacan.jpg" alt="Logo Chimalhuacán" class="logo">
+        <h1>Chimalhuacán</h1>
+        <img src="Logo conalep.png" alt="Logo Conalep" class="logo">
     </div>
-   <h1>Museos</h1>
-  </header>
+    <div class="sub-title">Tlacuilolli Chimalhuacán - Guía Turística</div>
+    
+    <!-- Menú desplegable circular -->
+    <div class="dropdown">
+        <button class="dropdown-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="dropdown-content">
+            <a href="index.html" class="active">Página Principal</a>
+            <a href="zona-arqueologica.html">Zonas Arqueológicas</a>
+            <a href="monumentos.html">Monumentos</a>
+            <a href="parques.html">Parques</a>
+            <a href="plazas.html">Plazas</a>
+            <a href="zona deportiva.html">Zona Deportiva</a>
+            <a href="museos.html">Museos</a>
+        </div>
+    </div>
+</header>
 
-  <div class="carrusel">
-      <div class="imagenes">
-          <img class="imagen" src="cc1.jpg" alt="Imagen 1">
-          <img class="imagen" src="cc2.jpg" alt="Imagen 2">
-          <img class="imagen" src="cc3.jpg" alt="Imagen 3">
-          <img class="imagen" src="cc4.jpg" alt="Imagen 4">
-          <img class="imagen" src="cc5.jpg" alt="Imagen 5">
-          <img class="imagen" src="cc6.jpg" alt="Imagen 6">
-          <img class="imagen" src="cc7.jpg" alt="Imagen 7">
-          <img class="imagen" src="cc8.jpg" alt="Imagen 8">
-          <img class="imagen" src="cc9.jpg" alt="Imagen 9">
-          <img class="imagen" src="cc10.jpg" alt="Imagen 10">
-      </div>
-      <div class="botones">
-          <button class="boton" id="prev">❮</button>
-          <button class="boton" id="next">❯</button>
-      </div>
-  </div>
+<div class="container">
+    <h2>Principales Atracciones</h2>
 
-  <section class="content">
-<div class="article">
-<h2>🏺 Museo Canto del Cincel</h2>
-<img src="cc1.jpg" alt="Museo Canto del Cincel">
-<p>El Museo Canto del Cincel es un espacio dedicado a la preservación y promoción de la cultura local. A través de exposiciones y talleres, el museo busca acercar a la comunidad a su patrimonio cultural y artístico.</p>
+    <div class="tourist-spot" onclick="window.location.href='zona-arqueologica.html'">
+        <h3>Zonas Arqueológicas</h3>
+        <p>Los Pochotes</p>
+        <img src="za14.jpg" alt="Zona Arqueológica">
+    </div>
+
+    <div class="tourist-spot" onclick="window.location.href='monumentos.html'">
+        <h3>Monumentos</h3>
+        <p>Capilla del Santo Entierro</p>
+        <p>Guerrero Chimalli</p>
+        <img src="gch1.jpg" alt="Monumentos">
+    </div>
+
+    <div class="tourist-spot" onclick="window.location.href='parques.html'">
+        <h3>Parques</h3>
+        <p>Parque Ecoturístico el Chimalhuache</p>
+        <img src="parque chimal.jpg" alt="Parques">
+    </div>
+
+    <div class="tourist-spot" onclick="window.location.href='plazas.html'">
+        <h3>Plazas</h3>
+        <p>Plaza Vidrieros</p>
+        <p>Plaza Zaragoza</p>
+        <img src="plaza zaragoza.png" alt="Plazas">
+    </div>
+
+    <div class="tourist-spot" onclick="window.location.href='zona deportiva.html'">
+        <h3>Zona Deportiva</h3>
+        <p>El Tepalcate</p>
+        <img src="Tepalcates.jpg" alt="Zona Deportiva">
+    </div>
+
+    <div class="tourist-spot" onclick="window.location.href='museos.html'">
+        <h3>Museos</h3>
+        <p>Canto del cincel</p>
+        <p>Museo del chimaltonalli</p>
+        <img src="museo chimaltonalli.jpg" alt="Museos">
+    </div>
 </div>
 
-<div class="article">
-<h2>📍 Ubicación</h2>
-<img src="cc2.jpg" alt="Ubicación Museo Canto del Cincel">
-<p>Situado en el centro de Chimalhuacán, el museo es fácilmente accesible y está rodeado de otras atracciones culturales y recreativas.</p>
-</div>
-
-<div class="article">
-<h2>🎨 Exposiciones y Actividades</h2>
-<img src="cc5.jpg" alt="Exposiciones en Museo Canto del Cincel">
-<p>El museo alberga diversas exposiciones temporales y permanentes que destacan el arte y la tradición de la región, así como talleres para niños y adultos.</p>
-</div>
-<div class="article">
-  <h2>🕒 Horarios</h2>
-  <img src="cc3.jpg" alt="Horarios Museo Canto del Cincel">
-  <p>El museo abre sus puertas de martes a domingo, de 10:00 a 18:00 horas. Los lunes permanece cerrado al público.</p>
-</div>
-
-<div class="article">
-  <h2>🎟️ Entradas</h2>
-  <img src="cc4.jpg" alt="Entradas Museo Canto del Cincel">
-  <p>La entrada al museo es gratuita, lo que permite a todos disfrutar de las exposiciones y actividades sin costo alguno.</p>
-</div>
-
-<div class="article">
-  <h2>👥 Visitas Guiadas</h2>
-  <img src="cc6.jpg" alt="Visitas Guiadas Museo Canto del Cincel">
-  <p>Se ofrecen visitas guiadas para grupos escolares y turistas, con el fin de proporcionar una mejor comprensión de las exposiciones y la historia local. Se recomienda reservar con anticipación.</p>
-</div>
-
-<div class="article">
-  <h2>🛍️ Tienda de Souvenirs</h2>
-  <img src="cc7.jpg" alt="Tienda de Souvenirs Museo Canto del Cincel">
-  <p>El museo cuenta con una tienda de souvenirs donde los visitantes pueden adquirir artesanías locales, libros y otros recuerdos relacionados con la cultura de Chimalhuacán.</p>
-</div>
-
-<div class="article">
-  <h2>🌱 Proyectos Comunitarios</h2>
-  <img src="cc8.jpg" alt="Proyectos Comunitarios Museo Canto del Cincel">
-  <p>El museo participa en proyectos comunitarios que buscan fomentar el desarrollo cultural y social de la región, involucrando a la población en actividades artísticas y educativas.</p>
-</div>
-
-<div class="article">
-  <h2>🌍 Accesibilidad</h2>
-  <img src="cc9.jpg" alt="Accesibilidad Museo Canto del Cincel">
-  <p>El Museo Canto del Cincel es accesible para personas con discapacidad, con rampas y servicios adaptados para garantizar que todos puedan disfrutar de su visita.</p>
-</div>
-
-</section>
-
-  <section id="address-section" aria-label="Dirección de Los Pochotes">
-    📍 Dirección: 56353, Av de las Torres LT3, Saraperos, Chimalhuacán, Méx.
-  </section>
-
-<section aria-label="Mapa de ubicación de el Museo Canto del Cincel">
-  <h2>📍 Ubicación de el Museo Canto del Cincel</h2>
-  <div id="map">
-    <iframe 
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3759.6978433425!2d-98.9864907!3d19.4184962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1e36cbdafc151%3A0xb9994ba59b52d258!2sMuseo%20%22Canto%20del%20Cincel%22!5e0!3m2!1ses-419!2smx!4v1685064675550!5m2!1ses-419!2smx" 
-    width="100%" 
-    height="400" 
-    style="border:0;" 
-    allowfullscreen="" 
-    loading="lazy">
-</iframe>
-  </div>
-</section>
-
-<div class="nuevo-carrusel">
-      <div class="nuevo-imagenes">
-          <img class="nuevo-imagen" src="mc1.jpg" alt="Imagen 1">
-          <img class="nuevo-imagen" src="mc2.jpg" alt="Imagen 2">
-          <img class="nuevo-imagen" src="mc3.jpg" alt="Imagen 3">
-          <img class="nuevo-imagen" src="mc4.jpg" alt="Imagen 4">
-          <img class="nuevo-imagen" src="mc5.jpg" alt="Imagen 5">
-          <img class="nuevo-imagen" src="mc6.jpg" alt="Imagen 6">
-          <img class="nuevo-imagen" src="mc7.jpg" alt="Imagen 7">
-          <img class="nuevo-imagen" src="mc8.jpg" alt="Imagen 8">
-          <img class="nuevo-imagen" src="mc9.jpg" alt="Imagen 9">
-          <img class="nuevo-imagen" src="mc10.jpg" alt="Imagen 10">
-          <img class="nuevo-imagen" src="mc11.jpg" alt="Imagen 11">
-          <img class="nuevo-imagen" src="mc12.jpg" alt="Imagen 12">
-          <img class="nuevo-imagen" src="mc13.jpg" alt="Imagen 13">
-          <img class="nuevo-imagen" src="mc14.jpg" alt="Imagen 14">
-          <img class="nuevo-imagen" src="mc15.jpg" alt="Imagen 15">
-          <img class="nuevo-imagen" src="mc16.jpg" alt="Imagen 16">
-          <img class="nuevo-imagen" src="mc17.jpg" alt="Imagen 17">
-          <img class="nuevo-imagen" src="mc18.jpg" alt="Imagen 18">
-          <img class="nuevo-imagen" src="mc19.jpg" alt="Imagen 19">
-          <img class="nuevo-imagen" src="mc20.jpg" alt="Imagen 20">
-          <img class="nuevo-imagen" src="mc21.jpg" alt="Imagen 21">
-          <img class="nuevo-imagen" src="mc22.jpg" alt="Imagen 22">
-          <img class="nuevo-imagen" src="mc23.jpg" alt="Imagen 23">
-          <img class="nuevo-imagen" src="mc24.jpg" alt="Imagen 24">
-          <img class="nuevo-imagen" src="mc25.jpg" alt="Imagen 25">
-          <img class="nuevo-imagen" src="mc26.jpg" alt="Imagen 26">
-          <img class="nuevo-imagen" src="mc27.jpg" alt="Imagen 27">
-          <img class="nuevo-imagen" src="mc28.jpg" alt="Imagen 28">
-      </div>
-      <div class="botones">
-          <button class="boton" id="prev-nuevo">❮</button>
-          <button class="boton" id="next-nuevo">❯</button>
-      </div>
-  </div>
-
-  <section class="content">
-<div class="article">
-<h2>🏛️ Museo del Chimaltonalli</h2>
-<img src="mc28.jpg" alt="Museo del Chimaltonalli">
-<p>El Museo del Chimaltonalli es un espacio que celebra la historia y cultura de Chimalhuacán. Ofrece una mirada profunda a las tradiciones, costumbres y la evolución de la comunidad a lo largo de los años.</p>
-</div>
-
-<div class="article">
-<h2>📍 Ubicación</h2>
-<img src="mc27.jpg" alt="Ubicación Museo del Chimaltonalli">
-<p>Ubicado en una zona estratégica, el museo es de fácil acceso para los visitantes y está cerca de otros puntos de interés en Chimalhuacán.</p>
-</div>
-
-<div class="article">
-<h2>🎉 Eventos y Programas</h2>
-<img src="mc26.jpg" alt="Eventos en Museo del Chimaltonalli">
-<p>El museo organiza eventos culturales, charlas y actividades educativas que fomentan el interés por la historia y la cultura local, creando un espacio de aprendizaje y convivencia.</p>
-</div>
-
-<div class="article">
-<h2>🏫 Edificios Históricos</h2><!1>
-<img src="" alt="Edificios Históricos Plaza Zaragoza">
-<p>La Plaza Zaragoza está rodeada de edificios históricos y arquitectura tradicional, lo que le confiere un carácter patrimonial y cultural único. Estos elementos contribuyen a la identidad y el valor histórico del lugar.</p>
-</div>
-
-<div class="article">
-<h2>🌳 Áreas Verdes y Recreativas</h2><!1>
-<img src="" alt="Áreas Verdes Plaza Zaragoza">
-<p>La plaza cuenta con amplias áreas verdes y espacios recreativos, como jardines, fuentes y plazoletas, que ofrecen a los visitantes un entorno agradable y relajante para disfrutar.</p>
-</div>
-
-<div class="article">
-<h2>🚲 Movilidad Sostenible</h2><!1>
-<img src="" alt="Movilidad Sostenible Plaza Zaragoza">
-<p>La Plaza Zaragoza promueve la movilidad sostenible, con espacios designados para el tránsito peatonal y la circulación de bicicletas, fomentando un entorno amigable con el medio ambiente.</p>
-</div>
-</section>
-
-<section id="address-section" aria-label="Dirección de la Plaza Zaragoza">
-    📍 Dirección: 
-  </section>
-
-  <section aria-label="Mapa de ubicación de el Museo el Chimaltonalli">
-  <h2>📍 Ubicación de el Museo el Chimaltonalli</h2>
-  <div id="map">
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3761.5229898706!2d-98.94718268508593!3d19.416547487038947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1e3c05eea39d5%3A0x272be08b66660ed9!2sPlaza%20Zaragoza!5e0!3m2!1ses!2smx!4v1686002688524!5m2!1ses!2smx"
-      width="100%"
-      height="400"
-      style="border:0;"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-    ></iframe>
-  </div>
-</section>
-
-  <footer>© 2025 Tlacuilolli Chimalhuacán. Todos los derechos reservados.</footer>
-  
-  <script>
-        // Carrusel original
-        let index = 0;
-        const images = document.querySelectorAll('.imagenes .imagen');
-        const totalImages = images.length;
-
-        document.getElementById('next').addEventListener('click', () => {
-            index = (index + 1) % totalImages;
-            updateCarousel();
-        });
-
-        document.getElementById('prev').addEventListener('click', () => {
-            index = (index - 1 + totalImages) % totalImages;
-            updateCarousel();
-        });
-
-        function updateCarousel() {
-            const offset = -index * 100;
-            document.querySelector('.imagenes').style.transform = `translateX(${offset}%)`;
-        }
-
-        // Cambiar imagen cada 4 segundos
-        setInterval(() => {
-            index = (index + 1) % totalImages;
-            updateCarousel();
-        }, 4000); // 4000 ms = 4 segundos
-        
-         // Nuevo carrusel
-        let nuevoIndex = 0;
-        const nuevoImages = document.querySelectorAll('.nuevo-imagenes .nuevo-imagen');
-        const totalNuevoImages = nuevoImages.length;
-
-        document.getElementById('next-nuevo').addEventListener('click', () => {
-            nuevoIndex = (nuevoIndex + 1) % totalNuevoImages;
-            updateNuevoCarousel();
-        });
-
-        document.getElementById('prev-nuevo').addEventListener('click', () => {
-            nuevoIndex = (nuevoIndex - 1 + totalNuevoImages) % totalNuevoImages;
-            updateNuevoCarousel();
-        });
-
-        function updateNuevoCarousel() {
-            const offset = -nuevoIndex * 100;
-            document.querySelector('.nuevo-imagenes').style.transform = `translateX(${offset}%)`;
-        }
-
-        // Cambiar imagen del nuevo carrusel cada 4 segundos
-        setInterval(() => {
-            nuevoIndex = (nuevoIndex + 1) % totalNuevoImages;
-            updateNuevoCarousel();
-        }, 4000); // 4000 ms = 4 segundos
-  </script>
+<footer>
+    <p>&copy; 2025 Conalep Chimalhuacán</p>
+</footer>
 </body>
-</html>  
+</html>
