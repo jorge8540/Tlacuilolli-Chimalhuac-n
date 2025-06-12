@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zonas Deportivas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap"
+      rel="stylesheet" />
+    <style>
+      .dropdown {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        display: inline-block;
+      }
+
+      .dropdown-btn {
+        background-color: #ffc107;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .dropdown-btn span {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 3px 0;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border-radius: 10px;
+        padding: 10px 0;
+      }
+
+      .dropdown-content a {
+        color: var(--text-color);
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown-content a.active {
+        color: var(--primary-color);
+        font-weight: bold;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #ddd;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      :root {
+        --primary-color: #007bff;
+        --secondary-color: #ffc107;
+        --background-color: #f5f5f5;
+        --text-color: #333333;
+      }
+
+      body {
+        font-family: "Montserrat", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--background-color);
+        color: var(--text-color);
+      }
+
+      header {
+        background: var(--primary-color);
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+      }
+
+      h1 {
+        font-family: "Pacifico", cursive;
+        font-size: 48px;
+        color: white;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        margin: 0;
+      }
+
+      .content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+        padding: 2rem;
+      }
+
+      .article {
+        background-color: white;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .article:hover {
+        transform: scale(1.02);
+      }
+
+      .article h2 {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin-top: 0;
+      }
+
+      .article img {
+        width: 100%;
+        max-height: 120px;
+        object-fit: cover;
+        margin: 0.5rem 0 1rem;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .inline-img {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+        vertical-align: middle;
+        margin-right: 8px;
+        filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.15));
+      }
+
+      .heading-with-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 0.5rem;
+      }
+
+      footer {
+        background-color: var(--primary-color);
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.9rem;
+      }
+
+      #map {
+        width: 100%;
+        height: 400px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 2rem 0;
+      }
+
+      #address-section {
+        background-color: white;
+        max-width: 700px;
+        margin: 2rem auto;
+        padding: 1.5rem 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        text-align: center;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+      }
+
+      .carrusel {
+          position: relative;
+          max-width: 400px; /* Tamaño ajustado a 400px */
+          margin: 20px auto; /* Centrado */
+          overflow: hidden;
+          border: 2px solid #ccc;
+          border-radius: 10px;
+      }
+      .imagenes {
+          display: flex;
+          transition: transform 0.5s ease;
+          width: 100%; /* Ajustar al 100% */
+      }
+      .imagen {
+          min-width: 100%;
+          height: 500px; /* Mantener proporción */
+          object-fit: cover; /* Ajustar sin distorsionar */
+          box-sizing: border-box;
+      }
+      .botones {
+          position: absolute;
+          top: 50%;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          transform: translateY(-50%);
+      }
+      .boton {
+          background-color: rgba(255, 255, 255, 0.8);
+          border: none;
+          padding: 10px;
+          cursor: pointer;
+          border-radius: 5px;
+          font-size: 18px;
+      }
+
+      footer {
+        background-color: var(--primary-color);
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.9rem;
+        width: 100%; /* Ajustar el ancho al 100% */
+      }
+      /* Estilos para centrar el video */
+      #video-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centra horizontalmente */
+        margin: 2rem 0; /* Espaciado arriba y abajo */
+      }
+
+      video {
+        max-width: 100%; /* Asegura que el video no exceda el ancho del contenedor */
+        height: auto; /* Mantiene la proporción del video */
+      }
+    </style>
+  </head>
+<body>
+  <header>
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-label="Menú principal">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="dropdown-content" role="menu">
+        <a href="index.html" role="menuitem">Página Principal</a>
+        <a href="museo conalep chimalhuacan.html" class="active" role="menuitem">Museo Conalep Chimalhuacán</a>
+        <a href="zona-arqueologica.html"  role="menuitem">Zonas Arqueológicas</a>
+        <a href="monumentos.html" role="menuitem">Monumentos</a>
+        <a href="parques.html" role="menuitem">Parques</a>
+        <a href="plazas.html" role="menuitem">Plazas</a>
+        <a href="zona deportiva.html" role="menuitem">Zona Deportiva</a>
+        <a href="museos.html" role="menuitem">Museos</a>
+      </div>
+    </div>
+    <h1>Museo Conalep Chimalhuacán</h1>
+  </header>
+
+  <section id="address-section" aria-label="Dirección de Los Pochotes">
+     Museo realizado en el plantel conalep chimalhuacán, con música en lengua náhuatl.
+  </section>
+
+  <section id="video-section" aria-label="Video sobre Los Pochotes">
+    <h2>📹 Museo Conalep Chimalhuacán</h2>
+    <video controls width="600">
+      <source src="museo conalep chimalhuacán.mp4" type="video/mp4">
+      Tu navegador no soporta el elemento de video.
+    </video>
+  </section>
+
+<section id="address-section" aria-label="Dirección de Los Pochotes">
+     Conferencia realizada en el plantel conalep chimalhuacán sobre la zona arqueológica de Los Pochotes realizada por el cronista municipal Israel Higinio Calderón Ramírez.
+  </section>
+
+  <section class="content">
+<div class="article">
+<h2>🏛️ Información importante sobre la Zona Arqueológica de Los Pochotes</h2>
+<img src="conferencia pochotes9.jpg" alt="Zona Arqueológica de Los Pochotes">
+<p>Los Pochotes es un importante sitio arqueológico ubicado en el municipio de Chimalhuacán, Estado de México, en la zona metropolitana de la Ciudad de México.</p>
+</div>
+
+<div class="article">
+<h2>📍 Arquitectura</h2>
+<img src="conferencia pochotes8.jpg" alt="Ubicación Plaza Zaragoza">
+<p>El sitio presenta restos significativos de arquitectura del Posclásico Tardío (1200-1521 d.C.), incluyendo un tecpan (palacio), una estructura poco común en el Valle de México.  Sin embargo, la evidencia sugiere una ocupación del área desde el Preclásico.</p>
+</div>
+
+<div class="article">
+<h2>🎉 Descubrimientos</h2>
+<img src="conferencia pochotes6.jpg" alt="Eventos en Plaza Zaragoza">
+<p>Los Pochotes es considerado un posible lugar de origen de la civilización mesoamericana debido al descubrimiento del "Hombre de Chimalhuacán", cuyos restos datan de aproximadamente 12,000 años.  Otros hallazgos importantes incluyen un colmillo de mamut y diversos artefactos como esculturas y molcajetes</p>
+</div>
+</section>
+
+<section aria-label="Audio sobre Los Pochotes">
+  <div class="article">
+  <h2>🎵 Escucha la conferencia realizada en el plantel conalep chimalhuacán sobre Los Pochotes</h2>
+  <audio controls>
+    <source src="conferencia.ogg" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio. </audio>
+  </div>
+</section>
+
+ <div class="carrusel">
+    <div class="imagenes">
+      <img class="imagen" src="conferencia pochotes1.jpg" alt="Imagen 1">
+      <img class="imagen" src="conferencia pochotes2.jpg" alt="Imagen 2">
+      <img class="imagen" src="conferencia pochotes3.jpg" alt="Imagen 3">
+      <img class="imagen" src="conferencia pochotes4.jpg" alt="Imagen 4">
+      <img class="imagen" src="conferencia pochotes5.jpg" alt="Imagen 5">
+      <img class="imagen" src="conferencia pochotes6.jpg" alt="Imagen 6">
+      <img class="imagen" src="conferencia pochotes7.jpg" alt="Imagen 7">
+      <img class="imagen" src="conferencia pochotes8.jpg" alt="Imagen 8">
+      <img class="imagen" src="conferencia pochotes9.jpg" alt="Imagen 9">
+      <img class="imagen" src="conferencia pochotes10.jpg" alt="Imagen 10">
+      <img class="imagen" src="conferencia pochotes11.jpg" alt="Imagen 11">
+      <img class="imagen" src="conferencia pochotes12.jpg" alt="Imagen 12">
+      <img class="imagen" src="conferencia pochotes13.jpg" alt="Imagen 13">
+      <img class="imagen" src="conferencia pochotes14.jpg" alt="Imagen 14">
+      <img class="imagen" src="conferencia pochotes15.jpg" alt="Imagen 15">
+      <img class="imagen" src="conferencia pochotes16.jpg" alt="Imagen 16">
+      <img class="imagen" src="conferencia pochotes17.jpg" alt="Imagen 17">
+      <img class="imagen" src="conferencia pochotes18.jpg" alt="Imagen 18">
+
+    </div>
+    <div class="botones">
+      <button class="boton" id="prev">❮</button>
+      <button class="boton" id="next">❯</button>
+    </div>
+  </div>
+
+
+
+  <footer>© 2025 Tlacuilolli Chimalhuacán. Todos los derechos reservados.</footer>
+
+  
+  <script>
+    let index = 0;
+    const images = document.querySelectorAll('.imagen');
+    const totalImages = images.length;
+
+    document.getElementById('next').addEventListener('click', () => {
+      index = (index + 1) % totalImages;
+      updateCarousel();
+    });
+
+    document.getElementById('prev').addEventListener('click', () => {
+      index = (index - 1 + totalImages) % totalImages;
+      updateCarousel();
+    });
+
+    function updateCarousel() {
+      const offset = -index * 100;
+      document.querySelector('.imagenes').style.transform = `translateX(${offset}%)`;
+    }
+
+    // Cambiar imagen cada 4 segundos
+    setInterval(() => {
+      index = (index + 1) % totalImages;
+      updateCarousel();
+    }, 4000); // 4000 ms = 4 segundos
+  </script>
+</body>
+</html>
