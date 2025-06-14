@@ -161,6 +161,7 @@
         text-align: center;
         padding: 1rem;
         font-size: 0.9rem;
+        width: 100%; /* Ajustar el ancho al 100% */
       }
 
       #map {
@@ -221,25 +222,25 @@
           font-size: 18px;
       }
 
-      footer {
-        background-color: var(--primary-color);
-        color: white;
-        text-align: center;
-        padding: 1rem;
-        font-size: 0.9rem;
-        width: 100%; /* Ajustar el ancho al 100% */
-      }
       /* Estilos para centrar el video */
       #video-section {
         display: flex;
         flex-direction: column;
-        align-items: center; /* Centra horizontalmente */
-        margin: 2rem 0; /* Espaciado arriba y abajo */
+        align-items: center;
+        margin: 2rem 0;
       }
 
       video {
-        max-width: 100%; /* Asegura que el video no exceda el ancho del contenedor */
-        height: auto; /* Mantiene la proporción del video */
+        width: 100%; /* Ancho del 100% para adaptarse a la pantalla del dispositivo */
+        max-width: 600px; /* Ancho máximo para pantallas grandes */
+        height: 500px; /* Alto automático para mantener la proporción */
+        object-fit: cover; /* Asegura que el video cubra el área sin distorsionarse */
+      }
+
+      audio {
+        width: 100%; /* Ancho del 100% para adaptarse a la pantalla del dispositivo */
+        max-width: 600px; /* Ancho máximo para pantallas grandes */
+        margin: 1rem 0; /* Margen para separar del contenido */
       }
     </style>
   </head>
@@ -271,46 +272,47 @@
 
   <section id="video-section" aria-label="Video sobre Los Pochotes">
     <h2>📹 Museo Conalep Chimalhuacán</h2>
-    <video controls width="600">
+    <video controls>
       <source src="museo conalep chimalhuacán.mp4" type="video/mp4">
       Tu navegador no soporta el elemento de video.
     </video>
   </section>
 
-<section id="address-section" aria-label="Dirección de Los Pochotes">
+  <section id="address-section" aria-label="Dirección de Los Pochotes">
      Conferencia realizada en el plantel conalep chimalhuacán sobre la zona arqueológica de Los Pochotes realizada por el cronista municipal Israel Higinio Calderón Ramírez.
   </section>
 
   <section class="content">
-<div class="article">
-<h2>🏛️ Información importante sobre la Zona Arqueológica de Los Pochotes</h2>
-<img src="conferencia pochotes9.jpg" alt="Zona Arqueológica de Los Pochotes">
-<p>Los Pochotes es un importante sitio arqueológico ubicado en el municipio de Chimalhuacán, Estado de México, en la zona metropolitana de la Ciudad de México.</p>
-</div>
+    <div class="article">
+      <h2>🏛️ Información importante sobre la Zona Arqueológica de Los Pochotes</h2>
+      <img src="conferencia pochotes9.jpg" alt="Zona Arqueológica de Los Pochotes">
+      <p>Los Pochotes es un importante sitio arqueológico ubicado en el municipio de Chimalhuacán, Estado de México, en la zona metropolitana de la Ciudad de México.</p>
+    </div>
 
-<div class="article">
-<h2>📍 Arquitectura</h2>
-<img src="conferencia pochotes8.jpg" alt="Ubicación Plaza Zaragoza">
-<p>El sitio presenta restos significativos de arquitectura del Posclásico Tardío (1200-1521 d.C.), incluyendo un tecpan (palacio), una estructura poco común en el Valle de México.  Sin embargo, la evidencia sugiere una ocupación del área desde el Preclásico.</p>
-</div>
+    <div class="article">
+      <h2>📍 Arquitectura</h2>
+      <img src="conferencia pochotes8.jpg" alt="Ubicación Plaza Zaragoza">
+      <p>El sitio presenta restos significativos de arquitectura del Posclásico Tardío (1200-1521 d.C.), incluyendo un tecpan (palacio), una estructura poco común en el Valle de México.  Sin embargo, la evidencia sugiere una ocupación del área desde el Preclásico.</p>
+    </div>
 
-<div class="article">
-<h2>🎉 Descubrimientos</h2>
-<img src="conferencia pochotes6.jpg" alt="Eventos en Plaza Zaragoza">
-<p>Los Pochotes es considerado un posible lugar de origen de la civilización mesoamericana debido al descubrimiento del "Hombre de Chimalhuacán", cuyos restos datan de aproximadamente 12,000 años.  Otros hallazgos importantes incluyen un colmillo de mamut y diversos artefactos como esculturas y molcajetes</p>
-</div>
-</section>
+    <div class="article">
+      <h2>🎉 Descubrimientos</h2>
+      <img src="conferencia pochotes6.jpg" alt="Eventos en Plaza Zaragoza">
+      <p>Los Pochotes es considerado un posible lugar de origen de la civilización mesoamericana debido al descubrimiento del "Hombre de Chimalhuacán", cuyos restos datan de aproximadamente 12,000 años.  Otros hallazgos importantes incluyen un colmillo de mamut y diversos artefactos como esculturas y molcajetes</p>
+    </div>
+  </section>
 
-<section aria-label="Audio sobre Los Pochotes">
-  <div class="article">
-  <h2>🎵 Escucha la conferencia realizada en el plantel conalep chimalhuacán sobre Los Pochotes</h2>
-  <audio controls>
-    <source src="conferencia.ogg" type="audio/mpeg">
-    Tu navegador no soporta el elemento de audio. </audio>
-  </div>
-</section>
+  <section aria-label="Audio sobre Los Pochotes">
+    <div class="article">
+      <h2>🎵 Escucha la conferencia realizada en el plantel conalep chimalhuacán sobre Los Pochotes</h2>
+      <audio controls>
+        <source src="conferencia.ogg" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+      </audio>
+    </div>
+  </section>
 
- <div class="carrusel">
+  <div class="carrusel">
     <div class="imagenes">
       <img class="imagen" src="conferencia pochotes1.jpg" alt="Imagen 1">
       <img class="imagen" src="conferencia pochotes2.jpg" alt="Imagen 2">
@@ -330,7 +332,6 @@
       <img class="imagen" src="conferencia pochotes16.jpg" alt="Imagen 16">
       <img class="imagen" src="conferencia pochotes17.jpg" alt="Imagen 17">
       <img class="imagen" src="conferencia pochotes18.jpg" alt="Imagen 18">
-
     </div>
     <div class="botones">
       <button class="boton" id="prev">❮</button>
@@ -339,31 +340,34 @@
   </div>
 
   <section id="address-section" aria-label="Dirección de Los Pochotes">
-    El carnaval más largo de todo el mundo</section>
+    El carnaval más largo de todo el mundo
+  </section>
 
   <section id="video-section" aria-label="Video sobre Los Pochotes">
     <h2>📹 Video de el carnaval de chimalhuacán</h2>
-    <video controls width="600">
+    <video controls>
       <source src="carnaval.mp4" type="video/mp4">
       Tu navegador no soporta el elemento de video.
     </video>
   </section>
 
   <section aria-label="Audio sobre Los Pochotes">
-  <div class="article">
-  <h2>🎵 Carnaval de chimalhuacán</h2>
-  <audio controls>
-    <source src="carnaval chimal.mpeg" type="audio/mpeg">
-    Tu navegador no soporta el elemento de audio. </audio>
-  </div>
-</section>
+    <div class="article">
+      <h2>🎵 Carnaval de chimalhuacán</h2>
+      <audio controls>
+        <source src="carnaval chimal.mpeg" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+      </audio>
+    </div>
+  </section>
 
-<section id="address-section" aria-label="Dirección de Los Pochotes">
-    Planetario de Chimalhuacán</section>
+  <section id="address-section" aria-label="Dirección de Los Pochotes">
+    Planetario de Chimalhuacán
+  </section>
 
   <section id="video-section" aria-label="Video sobre Los Pochotes">
     <h2>📹 Entrevista en el Planetario de Chimalhuacán</h2>
-    <video controls width="600">
+    <video controls>
       <source src="planetario.mp4" type="video/mp4">
       Tu navegador no soporta el elemento de video.
     </video>
@@ -371,7 +375,6 @@
 
   <footer>© 2025 Tlacuilolli Chimalhuacán. Todos los derechos reservados.</footer>
 
-  
   <script>
     let index = 0;
     const images = document.querySelectorAll('.imagen');
